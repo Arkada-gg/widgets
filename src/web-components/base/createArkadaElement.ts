@@ -1,8 +1,8 @@
+import styles from "@/index.css?inline";
+import type { WidgetSize, WidgetTheme } from "@/shared/config";
+import { DEFAULT_SIZE, DEFAULT_THEME } from "@/shared/config";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import type { WidgetTheme, WidgetSize, WidgetVariant } from "@/shared/config";
-import { DEFAULT_THEME, DEFAULT_SIZE, DEFAULT_VARIANT } from "@/shared/config";
-import styles from "@/index.css?inline";
 
 export interface ArkadaElementConfig<TData> {
   /** The React component to render inside Shadow DOM */
@@ -10,7 +10,6 @@ export interface ArkadaElementConfig<TData> {
     data: TData;
     theme?: WidgetTheme;
     size?: WidgetSize;
-    variant?: WidgetVariant;
     [key: string]: unknown;
   }>;
   /** Additional observed attributes beyond the shared ones (theme, size, variant, data) */
@@ -18,14 +17,19 @@ export interface ArkadaElementConfig<TData> {
   /** Map of event handler prop names to event config.
    *  e.g. { onVerify: { eventName: "verify", buildDetail: (el, args) => ({ entryId: args[0], address: el.getAttribute("address") }) } }
    *  Simpler form: { onVerify: "verify" } — detail is the first argument passed to the handler. */
-  events?: Record<string, string | { eventName: string; buildDetail: (el: HTMLElement, args: unknown[]) => unknown }>;
+  events?: Record<
+    string,
+    | string
+    | {
+        eventName: string;
+        buildDetail: (el: HTMLElement, args: unknown[]) => unknown;
+      }
+  >;
 }
 
 const SHARED_ATTRIBUTES = ["theme", "size", "variant", "data"] as const;
 
-export function createArkadaElement<TData>(
-  config: ArkadaElementConfig<TData>,
-) {
+export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
   const allObserved = [
     ...SHARED_ATTRIBUTES,
     ...(config.observedAttributes ?? []),
@@ -97,8 +101,6 @@ export function createArkadaElement<TData>(
       const theme =
         (this.getAttribute("theme") as WidgetTheme) || DEFAULT_THEME;
       const size = (this.getAttribute("size") as WidgetSize) || DEFAULT_SIZE;
-      const variant =
-        (this.getAttribute("variant") as WidgetVariant) || DEFAULT_VARIANT;
 
       // Build event handler props
       const eventProps: Record<string, (...args: unknown[]) => void> = {};
@@ -128,7 +130,6 @@ export function createArkadaElement<TData>(
           data,
           theme,
           size,
-          variant,
           ...eventProps,
         }),
       );

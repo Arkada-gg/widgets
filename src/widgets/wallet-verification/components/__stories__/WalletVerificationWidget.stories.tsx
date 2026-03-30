@@ -16,10 +16,10 @@ const createMockData = (
   progress: 60,
   entries: Array.from({ length: 7 }, (_, i) => ({
     id: `entry-${i}`,
-    network: { name: "Base", icon: "networks/base.png" },
+    network: { name: "Base", icon: "tokens/base.svg" },
     action: "Bridge",
     actionUrl: "#",
-    status: WalletBadges.LEGENDARY,
+    status: WalletBadges.IDENTIFIED,
     statusLabel: "Unverified",
   })),
   ...overrides,
@@ -32,7 +32,6 @@ const meta: Meta<typeof WalletVerificationWidget> = {
     data: createMockData(),
     theme: "dark",
     size: "m",
-    variant: "vertical",
   },
   argTypes: {
     theme: {
@@ -42,10 +41,6 @@ const meta: Meta<typeof WalletVerificationWidget> = {
     size: {
       control: "radio",
       options: ["s", "m", "l"],
-    },
-    variant: {
-      control: "radio",
-      options: ["vertical", "horizontal"],
     },
   },
 };
