@@ -3,7 +3,7 @@ import { ProgressBar } from "@/ui-kit/components/base/ProgressBar";
 import { RankDisplay } from "@/ui-kit/components/composed/RankDisplay";
 import { WalletScores } from "@/ui-kit/components/composed/WalletScores";
 import { getBadgeConfig } from "../model/badge-config";
-import type { WalletVerificationData } from "../model/types";
+import { WalletBadges, type WalletVerificationData } from "../model/types";
 
 export interface WidgetHeaderProps {
   data: WalletVerificationData;
@@ -57,11 +57,16 @@ export function WidgetHeader({ data, className }: WidgetHeaderProps) {
               </svg>
             </button>
           </div>
-          <ProgressBar progress={data.progress} milestones={[]} />
+          <ProgressBar currentBadge={data.currentBadge} />
         </div>
 
         {/* Next rank */}
-        <div className="relative flex flex-col items-center w-[102px] pt-4">
+        <div
+          className={cn(
+            "relative flex flex-col items-center w-[102px] pt-4",
+            data.currentBadge === WalletBadges.LEGENDARY && "blur-[6px]",
+          )}
+        >
           <RankDisplay
             badge={nextBadgeConfig}
             label="Next rang"
