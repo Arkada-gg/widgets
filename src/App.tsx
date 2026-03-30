@@ -26,7 +26,7 @@ const MOCK_DATA: WalletVerificationData = {
 
 function App() {
   const [theme, setTheme] = useState<WidgetTheme>("dark");
-  const [size, setSize] = useState<WidgetSize>("m");
+  const [size, setSize] = useState<WidgetSize>("lg");
 
   return (
     <div className="min-h-screen bg-neutral-900 flex flex-col items-center justify-center gap-8 p-8">

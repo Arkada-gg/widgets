@@ -21,7 +21,12 @@ export function WidgetHeader({ data, size, className }: WidgetHeaderProps) {
       className={cn("relative bg-(--arkada-bg-header) w-full", className)}
     >
       {/* Rank displays + progress */}
-      <div className="flex items-start justify-between px-8 pb-3 pt-5">
+      <div
+        className={cn(
+          "flex items-start justify-between pb-3 pt-5",
+          size === "lg" ? "px-8" : "px-4",
+        )}
+      >
         {/* Current rank */}
         <div className="relative flex flex-col items-center w-[102px] pt-4">
           <RankDisplay badge={currentBadgeConfig} label="Your rang" isActive />
