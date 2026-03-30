@@ -5,8 +5,8 @@ import "./arkada-wv-widget";
 export { ArkadaWvWidget } from "./arkada-wv-widget";
 
 // Re-export shared types consumers need
-export type { WidgetTheme, WidgetSize, WidgetVariant } from "@/shared/config";
+export type { WidgetSize, WidgetTheme } from "@/shared/config";
 
 // Re-export widget types
-export type { WalletVerificationData } from "@/widgets/wallet-verification";
 export { WalletBadges } from "@/widgets/wallet-verification";
+export type { WalletVerificationData } from "@/widgets/wallet-verification";
