@@ -27,7 +27,7 @@ export interface ArkadaElementConfig<TData> {
   >;
 }
 
-const SHARED_ATTRIBUTES = ["theme", "size", "variant", "data"] as const;
+const SHARED_ATTRIBUTES = ["theme", "size", "data", "height"] as const;
 
 export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
   const allObserved = [
@@ -101,6 +101,8 @@ export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
       const theme =
         (this.getAttribute("theme") as WidgetTheme) || DEFAULT_THEME;
       const size = (this.getAttribute("size") as WidgetSize) || DEFAULT_SIZE;
+      const heightAttr = this.getAttribute("height");
+      const height = heightAttr ? Number(heightAttr) : undefined;
 
       // Build event handler props
       const eventProps: Record<string, (...args: unknown[]) => void> = {};
@@ -130,6 +132,7 @@ export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
           data,
           theme,
           size,
+          ...(height != null && !Number.isNaN(height) ? { height } : {}),
           ...eventProps,
         }),
       );

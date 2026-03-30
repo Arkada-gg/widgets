@@ -7,10 +7,16 @@ import "../styles/widget.css";
 import { WidgetChainsList } from "./WidgetChainsList";
 import { WidgetHeader } from "./WidgetHeader";
 
+// widget height default value
+const DEFAULT_HEIGHT = 600;
+// minimal widget height
+const MIN_HEIGHT = 370;
+
 export interface WalletVerificationWidgetProps {
   data: WalletVerificationData;
   theme?: WidgetTheme;
   size?: WidgetSize;
+  height?: number;
   onVerify?: (entryId: string) => void;
   className?: string;
 }
@@ -19,11 +25,13 @@ export function WalletVerificationWidget({
   data,
   theme = DEFAULT_THEME,
   size = DEFAULT_SIZE,
+  height,
   onVerify,
   className,
 }: WalletVerificationWidgetProps) {
   const themeRef = useTheme(theme);
   const sizeConfig = SIZE_CONFIG[size];
+  const resolvedHeight = Math.max(height ?? DEFAULT_HEIGHT, MIN_HEIGHT);
 
   return (
     <div
@@ -37,6 +45,7 @@ export function WalletVerificationWidget({
       )}
       style={{
         width: sizeConfig.width,
+        height: resolvedHeight,
         maxWidth: "100%",
       }}
     >
@@ -50,7 +59,7 @@ export function WalletVerificationWidget({
       <WidgetChainsList
         entries={data.entries}
         onVerify={onVerify}
-        className={cn("h-[440px]")}
+        className="flex-1 min-h-0"
       />
     </div>
   );
