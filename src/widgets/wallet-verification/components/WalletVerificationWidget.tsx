@@ -1,6 +1,7 @@
 import type { WidgetSize, WidgetTheme } from "@/shared/config";
 import { DEFAULT_SIZE, DEFAULT_THEME, SIZE_CONFIG } from "@/shared/config";
 import { useTheme } from "@/shared/hooks/useTheme";
+import { getCloudflareLink } from "@/shared/utils/cloudflare";
 import { cn } from "@/shared/utils/cn";
 import type { WalletVerificationData } from "../model/types";
 import "../styles/widget.css";
@@ -47,6 +48,9 @@ export function WalletVerificationWidget({
         width: sizeConfig.width,
         height: resolvedHeight,
         maxWidth: "100%",
+        backgroundImage: `url(${getCloudflareLink(`widget/widget-wv-bg-${theme}.avif`)})`,
+        backgroundSize: "auto 100%",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Scrollbar divider on right edge */}
