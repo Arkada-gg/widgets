@@ -17,8 +17,6 @@ const createMockData = (
   entries: Array.from({ length: 7 }, (_, i) => ({
     id: `entry-${i}`,
     network: { name: "Base", icon: "tokens/base.svg" },
-    action: "Bridge",
-    actionUrl: "#",
     status: WalletBadges.IDENTIFIED,
     statusLabel: "Unverified",
   })),
@@ -138,21 +136,18 @@ export const MixedStatuses: Story = {
         {
           id: "1",
           network: { name: "Ethereum", icon: "networks/ethereum.png" },
-          action: "Swap",
           status: WalletBadges.UNVERIFIED,
           statusLabel: "Verified",
         },
         {
           id: "2",
           network: { name: "Base", icon: "networks/base.png" },
-          action: "Bridge",
           status: WalletBadges.BASIC,
           statusLabel: "Unverified",
         },
         {
           id: "3",
           network: { name: "Arbitrum", icon: "networks/arbitrum.png" },
-          action: "Stake",
           status: WalletBadges.LEGENDARY,
           isOutdated: true,
           statusLabel: "Outdated",

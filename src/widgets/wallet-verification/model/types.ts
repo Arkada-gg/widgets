@@ -27,8 +27,6 @@ export interface WalletEntry {
     name: string;
     icon: string; // R2 asset path
   };
-  action: string;
-  actionUrl?: string;
   status: WalletBadges;
   isOutdated?: boolean;
   statusLabel: string;

@@ -38,24 +38,6 @@ export function ChainListEntry({
         </span>
       </div>
 
-      {/* Action */}
-      <div className="shrink-0">
-        {entry.actionUrl ? (
-          <a
-            href={entry.actionUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans font-medium text-sm text-(--arkada-text-primary) underline leading-none hover:opacity-80 transition-opacity"
-          >
-            {entry.action}
-          </a>
-        ) : (
-          <span className="font-sans font-medium text-sm text-(--arkada-text-primary) underline leading-none">
-            {entry.action}
-          </span>
-        )}
-      </div>
-
       {/* Status */}
       <div className="flex items-center gap-2 w-[112px] shrink-0">
         <StatusIcon
