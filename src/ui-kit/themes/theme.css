@@ -1,0 +1,61 @@
+/* ===========================
+   ARKADA THEME SYSTEM
+   CSS custom properties for runtime theme switching.
+   Applied via data-theme="dark|light" on the widget root.
+   =========================== */
+
+/* Dark theme (default) */
+[data-theme="dark"] {
+  --arkada-bg: #000000;
+  --arkada-bg-header: #1c1c1c;
+  --arkada-bg-card: rgba(28, 28, 28, 0.7);
+  --arkada-bg-overlay: rgba(255, 255, 255, 0.05);
+  --arkada-bg-overlay-badge: rgba(255, 255, 255, 0.05);
+  --arkada-bg-progress-track: rgba(255, 255, 255, 0.15);
+
+  --arkada-text-primary: #ffffff;
+  --arkada-text-secondary: #9a9a9a;
+  --arkada-text-muted: #878787;
+  --arkada-text-scores: #c2c2c2;
+  --arkada-text-next-rank: #909090;
+
+  --arkada-border: #303030;
+  --arkada-divider: #2e2e2e;
+
+  --arkada-tab-bg: #000000;
+  --arkada-tab-border: #303030;
+  --arkada-tab-active-bg: #ffffff;
+  --arkada-tab-active-text: #000000;
+  --arkada-tab-inactive-text: #ffffff;
+
+  --arkada-shadow-tab: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  --arkada-shadow-scores: 0px 12px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --arkada-bg: #f7f7f7;
+  --arkada-bg-header: #ffffff;
+  --arkada-bg-card: rgba(255, 255, 255, 0.7);
+  --arkada-bg-overlay: rgba(0, 0, 0, 0.5);
+  --arkada-bg-overlay-badge: rgba(0, 0, 0, 0.5);
+  --arkada-bg-progress-track: rgba(138, 138, 138, 0.15);
+
+  --arkada-text-primary: #000000;
+  --arkada-text-secondary: #9a9a9a;
+  --arkada-text-muted: #878787;
+  --arkada-text-scores: #c2c2c2;
+  --arkada-text-next-rank: #d1d1d1;
+
+  --arkada-border: #e5e5e5;
+  --arkada-divider: #d6d6d6;
+
+  --arkada-tab-bg: #ffffff;
+  --arkada-tab-border: #e5e5e5;
+  --arkada-tab-active-bg: #000000;
+  --arkada-tab-active-text: #ffffff;
+  --arkada-tab-inactive-text: #000000;
+
+  --arkada-shadow-tab: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  --arkada-shadow-scores: 0px 12px 12px 0px rgba(0, 0, 0, 0.1);
+}

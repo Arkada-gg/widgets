@@ -1,0 +1,17 @@
+/* Widget-scoped styles for effects that can't be done purely with Tailwind */
+
+.arkada-wv-title-gradient {
+  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.arkada-wv-scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.arkada-wv-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
