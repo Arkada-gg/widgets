@@ -6,7 +6,7 @@ import {
   SIZE_CONFIG,
 } from "@/shared/config";
 import { cn } from "@/shared/utils/cn";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "@/shared/hooks/useTheme";
 import type { WalletVerificationData } from "../model/types";
 import "../styles/widget.css";
 import { WidgetHeader } from "./WidgetHeader";

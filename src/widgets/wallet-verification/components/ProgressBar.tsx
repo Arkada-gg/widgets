@@ -1,6 +1,6 @@
 import { cn } from "@/shared/utils/cn";
-import { BADGE_CONFIGS } from "@/widgets/wallet-verification/model/badge-config";
-import type { WalletBadges } from "@/widgets/wallet-verification/model/types";
+import { BADGE_CONFIGS } from "../model/badge-config";
+import type { WalletBadges } from "../model/types";
 
 const BADGE_KEYS = Object.keys(BADGE_CONFIGS).map(Number) as WalletBadges[];
 const TOTAL_TIERS = BADGE_KEYS.length;

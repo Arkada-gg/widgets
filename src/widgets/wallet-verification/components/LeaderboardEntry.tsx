@@ -1,8 +1,8 @@
 import { cn } from "@/shared/utils/cn";
-import { Button } from "../base/Button";
-import { NetworkIcon } from "../base/NetworkIcon";
-import { StatusIcon } from "../base/StatusIcon";
-import type { WalletEntry } from "@/widgets/wallet-verification/model/types";
+import { Button } from "@/ui-kit/components/base/Button";
+import { NetworkIcon } from "@/ui-kit/components/base/NetworkIcon";
+import { StatusIcon } from "@/ui-kit/components/base/StatusIcon";
+import type { WalletEntry } from "../model/types";
 
 export interface LeaderboardEntryProps {
   entry: WalletEntry;

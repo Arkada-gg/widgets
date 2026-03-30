@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/shared/utils/cn";
 import { TabGroup, type TabItem } from "@/ui-kit/components/base/TabGroup";
-import { LeaderboardEntry } from "@/ui-kit/components/composed/LeaderboardEntry";
+import { LeaderboardEntry } from "./LeaderboardEntry";
 import type { WalletEntry, FilterTab } from "../model/types";
 
 const TABS: TabItem[] = [

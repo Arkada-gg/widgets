@@ -12,10 +12,17 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, "src/web-components/arkada-wv-widget.ts"),
-      name: "ArkadaWidgets",
-      fileName: "arkada-widgets",
-      formats: ["es", "umd"],
+      entry: {
+        "arkada-widgets": resolve(
+          __dirname,
+          "src/web-components/index.ts",
+        ),
+        "arkada-wv-widget": resolve(
+          __dirname,
+          "src/web-components/arkada-wv-widget.ts",
+        ),
+      },
+      formats: ["es"],
     },
     rollupOptions: {
       output: {

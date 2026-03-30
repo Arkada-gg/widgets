@@ -1,6 +1,6 @@
 import { getCloudflareLink } from "@/shared/utils/cloudflare";
 import { cn } from "@/shared/utils/cn";
-import type { BadgeConfig } from "@/widgets/wallet-verification/model/types";
+import type { BadgeConfig } from "../model/types";
 
 export interface RankDisplayProps {
   badge: BadgeConfig;

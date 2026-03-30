@@ -1,0 +1,137 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import type { WidgetTheme, WidgetSize, WidgetVariant } from "@/shared/config";
+import { DEFAULT_THEME, DEFAULT_SIZE, DEFAULT_VARIANT } from "@/shared/config";
+import styles from "@/index.css?inline";
+
+export interface ArkadaElementConfig<TData> {
+  /** The React component to render inside Shadow DOM */
+  component: React.ComponentType<{
+    data: TData;
+    theme?: WidgetTheme;
+    size?: WidgetSize;
+    variant?: WidgetVariant;
+    [key: string]: unknown;
+  }>;
+  /** Additional observed attributes beyond the shared ones (theme, size, variant, data) */
+  observedAttributes?: string[];
+  /** Map of event handler prop names to event config.
+   *  e.g. { onVerify: { eventName: "verify", buildDetail: (el, args) => ({ entryId: args[0], address: el.getAttribute("address") }) } }
+   *  Simpler form: { onVerify: "verify" } — detail is the first argument passed to the handler. */
+  events?: Record<string, string | { eventName: string; buildDetail: (el: HTMLElement, args: unknown[]) => unknown }>;
+}
+
+const SHARED_ATTRIBUTES = ["theme", "size", "variant", "data"] as const;
+
+export function createArkadaElement<TData>(
+  config: ArkadaElementConfig<TData>,
+) {
+  const allObserved = [
+    ...SHARED_ATTRIBUTES,
+    ...(config.observedAttributes ?? []),
+  ];
+
+  return class extends HTMLElement {
+    static observedAttributes = allObserved;
+
+    private _root: ReactDOM.Root | null = null;
+    private _shadowRoot: ShadowRoot;
+    private _mountPoint: HTMLDivElement;
+    private _data: TData | null = null;
+
+    constructor() {
+      super();
+      this._shadowRoot = this.attachShadow({ mode: "open" });
+
+      const styleEl = document.createElement("style");
+      styleEl.textContent = styles;
+      this._shadowRoot.appendChild(styleEl);
+
+      this._mountPoint = document.createElement("div");
+      this._shadowRoot.appendChild(this._mountPoint);
+    }
+
+    connectedCallback() {
+      this._root = ReactDOM.createRoot(this._mountPoint);
+      this._render();
+    }
+
+    disconnectedCallback() {
+      this._root?.unmount();
+      this._root = null;
+    }
+
+    attributeChangedCallback() {
+      this._render();
+    }
+
+    set data(value: TData) {
+      this._data = value;
+      this._render();
+    }
+
+    get data(): TData | null {
+      return this._data;
+    }
+
+    private _render() {
+      if (!this._root) return;
+
+      let data = this._data;
+      if (!data) {
+        const dataAttr = this.getAttribute("data");
+        if (dataAttr) {
+          try {
+            data = JSON.parse(dataAttr) as TData;
+          } catch {
+            console.error(
+              `[${this.tagName.toLowerCase()}] Invalid JSON in data attribute`,
+            );
+            return;
+          }
+        }
+      }
+
+      if (!data) return;
+
+      const theme =
+        (this.getAttribute("theme") as WidgetTheme) || DEFAULT_THEME;
+      const size = (this.getAttribute("size") as WidgetSize) || DEFAULT_SIZE;
+      const variant =
+        (this.getAttribute("variant") as WidgetVariant) || DEFAULT_VARIANT;
+
+      // Build event handler props
+      const eventProps: Record<string, (...args: unknown[]) => void> = {};
+      if (config.events) {
+        for (const [propName, eventConfig] of Object.entries(config.events)) {
+          const isSimple = typeof eventConfig === "string";
+          const eventName = isSimple ? eventConfig : eventConfig.eventName;
+          const buildDetail = isSimple
+            ? (_el: HTMLElement, args: unknown[]) =>
+                args.length === 1 ? args[0] : args
+            : eventConfig.buildDetail;
+
+          eventProps[propName] = (...args: unknown[]) => {
+            this.dispatchEvent(
+              new CustomEvent(eventName, {
+                detail: buildDetail(this, args),
+                bubbles: true,
+                composed: true,
+              }),
+            );
+          };
+        }
+      }
+
+      this._root.render(
+        React.createElement(config.component, {
+          data,
+          theme,
+          size,
+          variant,
+          ...eventProps,
+        }),
+      );
+    }
+  };
+}

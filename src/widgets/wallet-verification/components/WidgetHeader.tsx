@@ -1,7 +1,7 @@
 import { cn } from "@/shared/utils/cn";
-import { ProgressBar } from "@/ui-kit/components/base/ProgressBar";
-import { RankDisplay } from "@/ui-kit/components/composed/RankDisplay";
-import { WalletScores } from "@/ui-kit/components/composed/WalletScores";
+import { ProgressBar } from "./ProgressBar";
+import { RankDisplay } from "./RankDisplay";
+import { WalletScores } from "./WalletScores";
 import { getBadgeConfig } from "../model/badge-config";
 import { WalletBadges, type WalletVerificationData } from "../model/types";
 
