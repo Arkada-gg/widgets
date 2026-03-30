@@ -29,7 +29,7 @@ const meta: Meta<typeof WalletVerificationWidget> = {
   args: {
     data: createMockData(),
     theme: "dark",
-    size: "m",
+    size: "lg",
   },
   argTypes: {
     theme: {
@@ -62,7 +62,7 @@ export const Light: Story = {
 };
 
 export const Small: Story = {
-  args: { size: "s" },
+  args: { size: "sm" },
   decorators: [
     (Story) => (
       <div style={{ width: 360, height: 500 }}>
@@ -73,7 +73,7 @@ export const Small: Story = {
 };
 
 export const Large: Story = {
-  args: { size: "l" },
+  args: { size: "lg" },
   decorators: [
     (Story) => (
       <div style={{ width: 800, height: 700 }}>

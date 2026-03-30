@@ -1,8 +1,8 @@
 export type WidgetTheme = "light" | "dark";
-export type WidgetSize = "s" | "m" | "l";
+export type WidgetSize = "sm" | "lg";
 
 export const DEFAULT_THEME: WidgetTheme = "dark";
-export const DEFAULT_SIZE: WidgetSize = "m";
+export const DEFAULT_SIZE: WidgetSize = "lg";
 
 export const SIZE_CONFIG = {
   s: { scale: 0.667 },

@@ -46,7 +46,7 @@ export function WalletVerificationWidget({
       <div className="absolute right-[6px] top-[162px] w-0.5 h-[100px] bg-(--arkada-divider) rounded-sm z-10" />
 
       {/* Header section */}
-      <WidgetHeader data={data} />
+      <WidgetHeader data={data} size={size} />
 
       {/* Leaderboard section */}
       <WidgetChainsList
