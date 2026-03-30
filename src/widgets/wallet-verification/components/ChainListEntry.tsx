@@ -2,17 +2,20 @@ import { cn } from "@/shared/utils/cn";
 import { Button } from "@/ui-kit/components/base/Button";
 import { NetworkIcon } from "@/ui-kit/components/base/NetworkIcon";
 import { StatusIcon } from "@/ui-kit/components/base/StatusIcon";
+import type { WidgetSize } from "@/web-components";
 import { getBadgeConfig } from "../model/badge-config";
 import type { WalletEntry } from "../model/types";
 
 export interface ChainListEntryProps {
   entry: WalletEntry;
+  size: WidgetSize;
   onVerify?: (entryId: string) => void;
   className?: string;
 }
 
 export function ChainListEntry({
   entry,
+  size,
   onVerify,
   className,
 }: ChainListEntryProps) {
@@ -27,15 +30,22 @@ export function ChainListEntry({
       )}
     >
       {/* Network */}
-      <div className="flex items-center gap-3 w-[123px] shrink-0">
+      <div
+        className={cn(
+          "flex items-center gap-3 shrink-0",
+          size === "lg" ? "w-[123px]" : "w-8",
+        )}
+      >
         <NetworkIcon
           icon={entry.network.icon}
           name={entry.network.name}
           size={32}
         />
-        <span className="font-sans font-semibold text-sm text-(--arkada-text-primary) leading-none truncate">
-          {entry.network.name}
-        </span>
+        {size === "lg" && (
+          <span className="font-sans font-semibold text-sm text-(--arkada-text-primary) leading-none truncate">
+            {entry.network.name}
+          </span>
+        )}
       </div>
 
       {/* Status */}

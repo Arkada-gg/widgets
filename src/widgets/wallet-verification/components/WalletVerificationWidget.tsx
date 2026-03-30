@@ -42,14 +42,12 @@ export function WalletVerificationWidget({
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Scrollbar divider on right edge */}
-      <div className="absolute right-[6px] top-[162px] w-0.5 h-[100px] bg-(--arkada-divider) rounded-sm z-10" />
-
       {/* Header section */}
       <WidgetHeader data={data} size={size} />
 
       {/* Leaderboard section */}
       <WidgetChainsList
+        size={size}
         entries={data.entries}
         onVerify={onVerify}
         className="flex-1 min-h-0"

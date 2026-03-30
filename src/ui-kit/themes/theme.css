@@ -28,6 +28,9 @@
   --arkada-tab-active-text: #000000;
   --arkada-tab-inactive-text: #ffffff;
 
+  --arkada-progress-track: rgba(255, 255, 255, 0.1);
+  --arkada-progress-track-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1) inset;
+
   --arkada-shadow-tab: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
   --arkada-shadow-scores: 0px 12px 12px 0px rgba(0, 0, 0, 0.1);
 }
@@ -55,6 +58,9 @@
   --arkada-tab-active-bg: #000000;
   --arkada-tab-active-text: #ffffff;
   --arkada-tab-inactive-text: #000000;
+
+  --arkada-progress-track: rgba(0, 0, 0, 0.1);
+  --arkada-progress-track-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.1) inset;
 
   --arkada-shadow-tab: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
   --arkada-shadow-scores: 0px 12px 12px 0px rgba(0, 0, 0, 0.1);

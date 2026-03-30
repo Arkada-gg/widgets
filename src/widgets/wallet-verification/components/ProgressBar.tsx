@@ -24,13 +24,7 @@ export function ProgressBar({ currentBadge, className }: ProgressBarProps) {
   return (
     <div className={cn("relative flex items-center w-full", className)}>
       {/* Track */}
-      <div
-        className="relative w-full h-3 rounded-3xl overflow-visible"
-        style={{
-          background: "rgba(255, 255, 255, 0.1)",
-          boxShadow: "0 0 1px 0 rgba(0, 0, 0, 0.1) inset",
-        }}
-      >
+      <div className="relative w-full h-3 rounded-3xl overflow-visible bg-(--arkada-progress-track) shadow-(--arkada-progress-track-shadow)">
         {/* Fill */}
         <div
           className="absolute inset-y-0 left-0 transition-all duration-200 ease-in-out"

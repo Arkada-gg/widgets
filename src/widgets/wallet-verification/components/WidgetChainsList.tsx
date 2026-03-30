@@ -1,5 +1,6 @@
 import { cn } from "@/shared/utils/cn";
 import { TabGroup, type TabItem } from "@/ui-kit/components/base/TabGroup";
+import type { WidgetSize } from "@/web-components";
 import { useMemo, useState } from "react";
 import { WalletBadges, type FilterTab, type WalletEntry } from "../model/types";
 import { ChainListEntry } from "./ChainListEntry";
@@ -12,12 +13,14 @@ const TABS: TabItem[] = [
 
 export interface WidgetChainsListProps {
   entries: WalletEntry[];
+  size: WidgetSize;
   onVerify?: (entryId: string) => void;
   className?: string;
 }
 
 export function WidgetChainsList({
   entries,
+  size,
   onVerify,
   className,
 }: WidgetChainsListProps) {
@@ -43,6 +46,7 @@ export function WidgetChainsList({
             {filteredEntries.map((entry) => (
               <ChainListEntry
                 key={entry.id}
+                size={size}
                 entry={entry}
                 onVerify={onVerify}
               />
