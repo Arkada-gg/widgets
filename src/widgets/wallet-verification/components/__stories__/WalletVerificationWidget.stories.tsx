@@ -41,6 +41,13 @@ const meta: Meta<typeof WalletVerificationWidget> = {
       options: ["s", "m", "l"],
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 600, height: 600 }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -56,10 +63,24 @@ export const Light: Story = {
 
 export const Small: Story = {
   args: { size: "s" },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 360, height: 500 }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Large: Story = {
   args: { size: "l" },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 800, height: 700 }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const UnverifiedBadge: Story = {

@@ -5,7 +5,7 @@ export const DEFAULT_THEME: WidgetTheme = "dark";
 export const DEFAULT_SIZE: WidgetSize = "m";
 
 export const SIZE_CONFIG = {
-  s: { width: 400, scale: 0.667 },
-  m: { width: 600, scale: 1 },
-  l: { width: 800, scale: 1.333 },
+  s: { scale: 0.667 },
+  m: { scale: 1 },
+  l: { scale: 1.333 },
 } as const;

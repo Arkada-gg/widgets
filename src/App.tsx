@@ -1,8 +1,8 @@
-import { useState } from "react";
+import type { WidgetSize, WidgetTheme } from "@/shared/config";
 import { WalletVerificationWidget } from "@/widgets/wallet-verification/components/WalletVerificationWidget";
-import { WalletBadges } from "@/widgets/wallet-verification/model/types";
 import type { WalletVerificationData } from "@/widgets/wallet-verification/model/types";
-import type { WidgetTheme, WidgetSize } from "@/shared/config";
+import { WalletBadges } from "@/widgets/wallet-verification/model/types";
+import { useState } from "react";
 
 const MOCK_DATA: WalletVerificationData = {
   title: "Verify Wallet",
@@ -19,9 +19,7 @@ const MOCK_DATA: WalletVerificationData = {
       name: "Base",
       icon: "networks/base.png",
     },
-    action: "Bridge",
-    actionUrl: "#",
-    status: "unverified" as const,
+    status: WalletBadges.LEGENDARY,
     statusLabel: "Unverified",
   })),
 };
@@ -59,14 +57,15 @@ function App() {
         </label>
       </div>
 
-      {/* Widget */}
-      <WalletVerificationWidget
-        data={MOCK_DATA}
-        theme={theme}
-        size={size}
-        variant="vertical"
-        onVerify={(id) => console.log("Verify:", id)}
-      />
+      {/* Widget — dimensions controlled by parent container */}
+      <div style={{ width: 600, height: 600 }}>
+        <WalletVerificationWidget
+          data={MOCK_DATA}
+          theme={theme}
+          size={size}
+          onVerify={(id) => console.log("Verify:", id)}
+        />
+      </div>
     </div>
   );
 }
