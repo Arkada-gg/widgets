@@ -1,7 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(find /Users/ilyataldykin/Documents/Work/Development/arkada/arkada-widgets -not -path */node_modules/* -not -path */.git/* -not -path */dist/* -type d)"
-    ]
+    "allow": []
   }
 }

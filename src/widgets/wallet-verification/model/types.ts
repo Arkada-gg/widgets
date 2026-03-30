@@ -14,9 +14,11 @@ export interface BadgeConfig {
   label: string;
   gradient: string;
   textGradient: string;
+  textGradientEntry: string;
   glowColor: string;
   icon: string; // R2 asset path
-  blurIntensity: number;
+  outlineGradient: string;
+  mainGradient: string;
 }
 
 export interface WalletEntry {
@@ -27,7 +29,8 @@ export interface WalletEntry {
   };
   action: string;
   actionUrl?: string;
-  status: "verified" | "unverified" | "outdated";
+  status: WalletBadges;
+  isOutdated?: boolean;
   statusLabel: string;
 }
 

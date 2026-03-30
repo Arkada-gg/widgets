@@ -2,7 +2,7 @@ import { cn } from "@/shared/utils/cn";
 import type { ButtonHTMLAttributes } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "red";
   size?: "sm" | "md";
 }
 
@@ -23,8 +23,10 @@ export function Button({
         size === "md" && "h-8 px-2.5 text-sm rounded-md",
         variant === "primary" &&
           "bg-accent text-white hover:bg-accent-hover active:brightness-90",
+        variant === "red" &&
+          "bg-accent-red text-white hover:bg-accent-red-hover active:brightness-90",
         variant === "ghost" &&
-          "bg-transparent text-[var(--arkada-text-primary)] hover:bg-[var(--arkada-bg-card)]",
+          "bg-transparent text-(--arkada-text-primary) hover:bg-(--arkada-bg-card)",
         className,
       )}
       {...props}

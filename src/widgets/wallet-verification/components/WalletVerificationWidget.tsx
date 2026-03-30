@@ -5,12 +5,12 @@ import {
   DEFAULT_VARIANT,
   SIZE_CONFIG,
 } from "@/shared/config";
-import { cn } from "@/shared/utils/cn";
 import { useTheme } from "@/shared/hooks/useTheme";
+import { cn } from "@/shared/utils/cn";
 import type { WalletVerificationData } from "../model/types";
 import "../styles/widget.css";
+import { WidgetChainsList } from "./WidgetChainsList";
 import { WidgetHeader } from "./WidgetHeader";
-import { WidgetLeaderboard } from "./WidgetLeaderboard";
 
 export interface WalletVerificationWidgetProps {
   data: WalletVerificationData;
@@ -58,7 +58,7 @@ export function WalletVerificationWidget({
       />
 
       {/* Leaderboard section */}
-      <WidgetLeaderboard
+      <WidgetChainsList
         entries={data.entries}
         onVerify={onVerify}
         className={cn(
