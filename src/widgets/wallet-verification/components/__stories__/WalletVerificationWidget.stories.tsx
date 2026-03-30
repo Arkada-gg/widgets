@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { WalletVerificationWidget } from "./WalletVerificationWidget";
-import { WalletBadges } from "../model/types";
-import type { WalletVerificationData } from "../model/types";
+import type { WalletVerificationData } from "../../model/types";
+import { WalletBadges } from "../../model/types";
+import { WalletVerificationWidget } from "../WalletVerificationWidget";
 
 const createMockData = (
   overrides?: Partial<WalletVerificationData>,

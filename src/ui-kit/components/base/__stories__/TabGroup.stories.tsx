@@ -1,6 +1,6 @@
-import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { TabGroup } from "./TabGroup";
+import { useState } from "react";
+import { TabGroup } from "../TabGroup";
 
 const TABS = [
   { id: "all", label: "All" },

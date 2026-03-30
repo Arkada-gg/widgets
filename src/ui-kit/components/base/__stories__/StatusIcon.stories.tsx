@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { StatusIcon } from "./StatusIcon";
+import { StatusIcon } from "../StatusIcon";
 
 const meta: Meta<typeof StatusIcon> = {
   title: "UI Kit/Base/StatusIcon",
@@ -9,7 +9,10 @@ const meta: Meta<typeof StatusIcon> = {
     size: 32,
   },
   argTypes: {
-    status: { control: "radio", options: ["verified", "unverified", "outdated"] },
+    status: {
+      control: "radio",
+      options: ["verified", "unverified", "outdated"],
+    },
     size: { control: { type: "range", min: 16, max: 64, step: 4 } },
   },
 };
