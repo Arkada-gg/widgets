@@ -4,8 +4,5 @@ export type WidgetSize = "sm" | "lg";
 export const DEFAULT_THEME: WidgetTheme = "dark";
 export const DEFAULT_SIZE: WidgetSize = "lg";
 
-export const SIZE_CONFIG = {
-  s: { scale: 0.667 },
-  m: { scale: 1 },
-  l: { scale: 1.333 },
-} as const;
+// export const ARKADA_PUBLIC_API_URL = "https://app-api.arkada.gg";
+export const ARKADA_PUBLIC_API_URL = "http://localhost:3001";

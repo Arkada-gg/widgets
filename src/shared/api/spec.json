@@ -1,0 +1,183 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/public/wallet/verify": {
+      "post": {
+        "operationId": "WalletWidgetController_verify",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/VerifyWalletDto" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyWalletResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get signing data for wallet verification (widget, no auth)",
+        "tags": ["Widget — Wallet Verification"]
+      }
+    },
+    "/public/wallet/status/{address}": {
+      "get": {
+        "operationId": "WalletWidgetController_status",
+        "parameters": [
+          {
+            "name": "address",
+            "required": true,
+            "in": "path",
+            "schema": { "example": "0xabc123...", "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletStatusResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get wallet verification status (widget, no auth)",
+        "tags": ["Widget — Wallet Verification"]
+      }
+    }
+  },
+  "info": {
+    "title": "Arkada Widget API",
+    "description": "Public API for the embeddable wallet verification widget",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "VerifyWalletDto": {
+        "type": "object",
+        "properties": {
+          "address": { "type": "string", "example": "0xabc123..." },
+          "chainId": { "type": "number", "example": 1868 }
+        },
+        "required": ["address", "chainId"]
+      },
+      "VerifyWalletDataDto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "example": "0xabc123...",
+            "description": "Normalized wallet address"
+          },
+          "nonce": {
+            "type": "number",
+            "example": 1710000000000,
+            "description": "Nonce (timestamp in ms)"
+          },
+          "newStatus": {
+            "type": "number",
+            "example": 5,
+            "description": "Status rank to set"
+          },
+          "price": {
+            "type": "string",
+            "example": 100,
+            "description": "Price in native token"
+          }
+        },
+        "required": ["user", "nonce", "newStatus", "price"]
+      },
+      "VerifyWalletResponseDto": {
+        "type": "object",
+        "properties": {
+          "data": { "$ref": "#/components/schemas/VerifyWalletDataDto" },
+          "signature": {
+            "type": "string",
+            "example": "0x...",
+            "description": "EIP-712 typed data signature"
+          }
+        },
+        "required": ["data", "signature"]
+      },
+      "WalletNetworkStatusDto": {
+        "type": "object",
+        "properties": {
+          "chainId": { "type": "number", "example": 1868 },
+          "networkName": { "type": "string", "example": "Soneium" },
+          "image": {
+            "type": "object",
+            "example": "https://cdn.example.com/chains/soneium.png",
+            "nullable": true
+          },
+          "bridgeUrl": {
+            "type": "object",
+            "example": "https://bridge.example.com",
+            "nullable": true
+          },
+          "badgeName": {
+            "type": "object",
+            "example": "Gold Badge",
+            "nullable": true
+          },
+          "statusRank": { "type": "number", "example": 5 },
+          "statusName": { "type": "string", "example": "Gold" },
+          "statusScore": { "type": "number", "example": 40 },
+          "isOutdated": { "type": "boolean", "example": false },
+          "notGlobal": { "type": "boolean", "example": false },
+          "actualResult": { "type": "number", "example": 123.45 },
+          "statusUpdatedAt": {
+            "type": "object",
+            "example": "2026-03-10T10:00:00.000Z",
+            "nullable": true
+          }
+        },
+        "required": [
+          "chainId",
+          "networkName",
+          "statusRank",
+          "statusName",
+          "statusScore",
+          "isOutdated",
+          "notGlobal",
+          "actualResult",
+          "statusUpdatedAt"
+        ]
+      },
+      "WalletGlobalStatusDto": {
+        "type": "object",
+        "properties": {
+          "score": { "type": "number", "example": 400 },
+          "rank": { "type": "number", "example": 5 },
+          "avgScore": { "type": "number", "example": 400 }
+        },
+        "required": ["score", "rank", "avgScore"]
+      },
+      "WalletStatusResponseDto": {
+        "type": "object",
+        "properties": {
+          "address": { "type": "string", "example": "0xabc123..." },
+          "networks": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/WalletNetworkStatusDto" }
+          },
+          "global": { "$ref": "#/components/schemas/WalletGlobalStatusDto" }
+        },
+        "required": ["address", "networks", "global"]
+      }
+    }
+  }
+}
