@@ -3,7 +3,11 @@ import { DEFAULT_THEME } from "@/shared/config";
 import { useTheme } from "@/shared/hooks/useTheme";
 import { cn } from "@/shared/utils/cn";
 import type { ButtonHTMLAttributes } from "react";
-import type { VerifyWalletState, VerifyWalletVariant } from "../model/types";
+import {
+  VerifyWalletVariants,
+  type VerifyWalletState,
+  type VerifyWalletVariant,
+} from "../model/types";
 import "../styles/verify-wallet-button.css";
 import {
   ChainGroupIcon,
@@ -41,44 +45,66 @@ type InnerProps = { state: VerifyWalletState; theme: WidgetTheme };
 function CompactInner({ state, theme }: InnerProps) {
   return (
     <div
-      className={cn(
-        "flex items-center gap-[12px] rounded-[16px] border border-white/50 px-[12px] py-[8px]",
-        theme === "dark" ? "vwb-border-dark" : "vwb-border-light-compact",
-      )}
+      className={cn("rounded-2xl", theme === "dark" ? "bg-black" : "bg-white")}
     >
-      <ChainGroupIcon
-        verified={state === "verified"}
-        className="h-[40px] w-[68px] shrink-0"
-      />
-      <span className="vwb-gradient-text font-semibold font-sans text-[18px] leading-none whitespace-nowrap">
-        Verify Wallet
-      </span>
+      <div
+        className={cn(
+          "rounded-2xl p-px",
+          theme === "dark"
+            ? "vwb-gradient-border-dark"
+            : "vwb-gradient-border-light",
+        )}
+      >
+        <div
+          className={cn(
+            "flex items-center gap-[12px] rounded-[15px] px-[12px] py-[8px]",
+            theme === "dark" ? "vwb-border-dark" : "vwb-border-light-compact",
+          )}
+        >
+          <ChainGroupIcon
+            verified={state === "verified"}
+            className="h-[40px] w-[68px] shrink-0"
+          />
+          <span className="vwb-gradient-text font-semibold font-sans text-[18px] leading-none whitespace-nowrap">
+            Verify Wallet
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
 
 /**
- * Groups 3–4: Compact Minimal
- * Flat solid bg, toggle icon (58×32), gradient text.
- * p-12, gap-12, rounded-16, border 1px.
+ * Compact Minimal
  */
 function CompactMinimalInner({ state, theme }: InnerProps) {
   return (
     <div
-      className={cn(
-        "flex items-center gap-[12px] rounded-[16px] border p-[12px]",
-        theme === "dark"
-          ? "bg-[#1f1f1f] border-white/50"
-          : "bg-white border-[rgba(107,107,107,0.5)]",
-      )}
+      className={cn("rounded-2xl", theme === "dark" ? "bg-black" : "bg-white")}
     >
-      <ToggleIcon
-        verified={state === "verified"}
-        className="h-[32px] w-[58px] shrink-0"
-      />
-      <span className="vwb-gradient-text font-semibold font-sans text-[18px] leading-none whitespace-nowrap">
-        Verify Wallet
-      </span>
+      <div
+        className={cn(
+          "rounded-2xl p-px",
+          theme === "dark"
+            ? "vwb-gradient-border-dark"
+            : "vwb-gradient-border-light",
+        )}
+      >
+        <div
+          className={cn(
+            "flex items-center gap-[12px] rounded-[15px] p-[12px]",
+            theme === "dark" ? "bg-[#1f1f1f]" : "bg-white",
+          )}
+        >
+          <ToggleIcon
+            verified={state === "verified"}
+            className="h-[32px] w-[58px] shrink-0"
+          />
+          <span className="vwb-gradient-text font-semibold font-sans text-[18px] leading-none whitespace-nowrap">
+            Verify Wallet
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -367,27 +393,28 @@ function OutlinedWideInner({ state }: InnerProps) {
 }
 
 /**
- * Group 16: Gradient
- * Full gradient background, border white/50, chain icon group, white text.
- * Unverified: muted gradient. Verified: brighter gradient + check on icon.
- * px-12 py-8, gap-12, rounded-16.
+ * Gradient Compact
  */
-function GradientInner({ state }: InnerProps) {
+function GradientCompactInner({ state }: InnerProps) {
   const isVerified = state === "verified";
   return (
-    <div
-      className={cn(
-        "flex items-center gap-[12px] rounded-[16px] border border-white/50 px-[12px] py-[8px]",
-        isVerified ? "vwb-full-gradient-active" : "vwb-full-gradient",
-      )}
-    >
-      <ChainGroupIcon
-        verified={isVerified}
-        className="h-[40px] w-[68px] shrink-0"
-      />
-      <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
-        Verify Wallet
-      </span>
+    <div className={cn("rounded-2xl vwb-full-gradient")}>
+      <div className={cn("rounded-2xl p-px", "vwb-gradient-border-dark")}>
+        <div
+          className={cn(
+            "flex items-center gap-[12px] rounded-[15px] px-[12px] py-[8px]",
+            "vwb-full-gradient",
+          )}
+        >
+          <ChainGroupIcon
+            verified={isVerified}
+            className="h-[40px] w-[68px] shrink-0"
+          />
+          <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
+            Verify Wallet
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -400,16 +427,16 @@ const VARIANT_MAP: Record<
   VerifyWalletVariant,
   React.ComponentType<InnerProps>
 > = {
-  compact: CompactInner,
-  "compact-minimal": CompactMinimalInner,
-  banner: BannerInner,
-  floating: FloatingInner,
-  "floating-subtle": FloatingSubtleInner,
-  pill: PillInner,
-  "pill-wide": PillWideInner,
-  outlined: OutlinedInner,
-  "outlined-wide": OutlinedWideInner,
-  gradient: GradientInner,
+  [VerifyWalletVariants.COMPACT]: CompactInner,
+  [VerifyWalletVariants.COMPACT_MINIMAL]: CompactMinimalInner,
+  [VerifyWalletVariants.BANNER]: BannerInner,
+  [VerifyWalletVariants.FLOATING]: FloatingInner,
+  [VerifyWalletVariants.FLOATING_SUBTLE]: FloatingSubtleInner,
+  [VerifyWalletVariants.PILL]: PillInner,
+  [VerifyWalletVariants.PILL_WIDE]: PillWideInner,
+  [VerifyWalletVariants.OUTLINED]: OutlinedInner,
+  [VerifyWalletVariants.OUTLINED_WIDE]: OutlinedWideInner,
+  [VerifyWalletVariants.GRADIENT]: GradientCompactInner,
 };
 
 /* ------------------------------------------------------------------ */

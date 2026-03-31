@@ -3,6 +3,26 @@
    Exact values extracted from Figma designs.
    =========================== */
 
+.vwb-gradient-border-dark {
+  background: linear-gradient(
+    135deg,
+    #ffffff80,
+    #ffffff40,
+    #ffffff40,
+    #ffffff1a
+  );
+}
+
+.vwb-gradient-border-light {
+  background: linear-gradient(
+    135deg,
+    #6b6b6b80,
+    #6b6b6b40,
+    #6b6b6b40,
+    #6b6b6b1a
+  );
+}
+
 /* ---- Text gradient (Groups 1–4, 8–9) ---- */
 .vwb-gradient-text {
   background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
@@ -44,27 +64,14 @@
 
 /* ---- Full gradient background inactive (Group 16 inactive) ---- */
 .vwb-full-gradient {
-  background: linear-gradient(
-    90deg,
-    rgba(190, 102, 179, 0.6) 0%,
-    rgba(123, 91, 191, 0.45) 50%,
-    rgba(83, 119, 255, 0.6) 100%
-  );
-}
-
-/* ---- Full gradient background active (Group 16 active) ---- */
-.vwb-full-gradient-active {
-  background: linear-gradient(
-    90deg,
-    rgba(190, 102, 179, 0.85) 0%,
-    rgba(123, 91, 191, 0.65) 50%,
-    rgba(83, 119, 255, 0.85) 100%
-  );
+  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
 }
 
 /* ---- Hover / press feedback ---- */
 .vwb-interactive {
-  transition: filter 150ms ease, transform 150ms ease;
+  transition:
+    filter 150ms ease,
+    transform 150ms ease;
 }
 
 .vwb-interactive:hover {

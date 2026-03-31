@@ -27,7 +27,7 @@ export const VerifyWalletVariants = {
   /** Full gradient bar inside status border (Group 15) */
   OUTLINED_WIDE: "outlined-wide",
   /** Full gradient background — premium look (Group 16) */
-  GRADIENT: "gradient",
+  GRADIENT: "gradient-compact",
 } as const;
 
 export type VerifyWalletVariant =
