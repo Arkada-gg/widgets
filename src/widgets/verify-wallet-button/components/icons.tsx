@@ -813,30 +813,64 @@ export function ChevronsRightIcon(props: IconProps) {
   );
 }
 
-/** Shield/alert icon for outlined variant unverified icon zone */
-export function ShieldAlertIcon(props: IconProps) {
+/** Wallet icon for outlined variant unverified icon zone */
+export function WalletSmallIcon(props: IconProps) {
   return (
     <svg
-      viewBox="0 0 22 19"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="27"
+      viewBox="0 0 30 27"
+      fill="none"
       {...props}
     >
-      <path
-        d="M11 1L20 5.5v5c0 4.5-3.2 7.5-9 9-5.8-1.5-9-4.5-9-9v-5L11 1Z"
-        fill="currentColor"
-        opacity={0.2}
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinejoin="round"
-      />
-      <path
-        d="M11 7v3.5"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        strokeLinecap="round"
-      />
-      <circle cx={11} cy={13.5} r={1} fill="currentColor" />
+      <g filter="url(#filter0_d_8570_93260)">
+        <path
+          d="M24.8708 16.06C24.6068 19.0441 22.4834 21 19.4028 21H9.50101C6.46445 21 4 18.4965 4 15.4118V7.58824C4 4.54824 5.80433 2.42471 8.60985 2.06706C8.8959 2.02235 9.19296 2 9.50101 2H19.4028C19.6889 2 19.9639 2.01118 20.228 2.05588C22.8575 2.36882 24.6398 4.23529 24.8708 6.94C24.9039 7.26412 24.6398 7.53235 24.3207 7.53235H22.6154C21.5592 7.53235 20.5801 7.94588 19.8759 8.68353C19.0398 9.51059 18.6217 10.6729 18.7207 11.8353C18.8967 13.8694 20.6571 15.4676 22.7475 15.4676H24.3207C24.6398 15.4676 24.9039 15.7359 24.8708 16.06Z"
+          fill="white"
+        />
+        <path
+          d="M26 10.349V12.6514C26 13.2661 25.5159 13.769 24.8998 13.7914H22.7434C21.5552 13.7914 20.466 12.9085 20.367 11.7014C20.3009 10.9973 20.565 10.3379 21.0271 9.87963C21.4342 9.45492 21.9953 9.20904 22.6114 9.20904H24.8998C25.5159 9.23139 26 9.73434 26 10.349Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_8570_93260"
+          x="0"
+          y="0"
+          width="30"
+          height="27"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_8570_93260"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_8570_93260"
+            result="shape"
+          />
+        </filter>
+      </defs>
     </svg>
   );
 }

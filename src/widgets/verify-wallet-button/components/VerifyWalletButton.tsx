@@ -15,10 +15,10 @@ import {
   CheckCircleIcon,
   CheckSmallIcon,
   ChevronsRightIcon,
-  ShieldAlertIcon,
   ToggleIcon,
   WalletCircleGradientIcon,
   WalletCircleIcon,
+  WalletSmallIcon,
 } from "./icons";
 
 export interface VerifyWalletButtonProps extends Omit<
@@ -103,6 +103,33 @@ function CompactMinimalInner({ state, theme }: InnerProps) {
             className="h-[32px] w-[58px] shrink-0"
           />
           <span className="vwb-gradient-text font-semibold font-sans text-[18px] leading-none whitespace-nowrap">
+            Verify Wallet
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Gradient Compact
+ */
+function GradientCompactInner({ state }: InnerProps) {
+  const isVerified = state === "verified";
+  return (
+    <div className={cn("rounded-2xl vwb-full-gradient")}>
+      <div className={cn("rounded-2xl p-px", "vwb-gradient-border-dark")}>
+        <div
+          className={cn(
+            "flex items-center gap-[12px] rounded-[15px] px-[12px] py-[8px]",
+            "vwb-full-gradient",
+          )}
+        >
+          <ChainGroupIcon
+            verified={isVerified}
+            className="h-[40px] w-[68px] shrink-0"
+          />
+          <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
             Verify Wallet
           </span>
         </div>
@@ -322,7 +349,7 @@ function PillWideInner({ state }: InnerProps) {
 }
 
 /**
- * Groups 13–14: Outlined
+ * Outlined
  * Same pill layout but with status-colored border.
  * Unverified: border #ff6a59 (red), shield icon in gradient zone.
  * Verified: border #13b343 (green), check in green gradient zone.
@@ -332,38 +359,44 @@ function OutlinedInner({ state, theme }: InnerProps) {
   return (
     <div
       className={cn(
-        "relative flex h-[54px] w-[220px] items-center rounded-[16px] border",
-        isVerified ? "border-[#13b343]" : "border-[#ff6a59]",
-        theme === "dark" ? "bg-black" : "bg-white",
+        "relative flex h-[54px] w-[220px] items-center rounded-2xl p-px",
+        isVerified ? "bg-[#13b343]" : "vwb-full-gradient",
       )}
     >
-      {/* Icon zone */}
       <div
         className={cn(
-          "absolute left-[4px] top-[4px] flex h-[46px] w-[60px] items-center justify-center rounded-[16px]",
-          isVerified ? "vwb-verified-gradient" : "vwb-icon-gradient",
+          "relative flex h-full w-full items-center rounded-[15px]",
+          theme === "dark" ? "bg-black" : "bg-white",
         )}
       >
-        {isVerified ? (
-          <CheckSmallIcon className="h-[18px] w-[21px]" />
-        ) : (
-          <ShieldAlertIcon className="h-[19px] w-[22px] text-white" />
-        )}
-      </div>
-      {/* Label */}
-      <div className="flex flex-1 items-center justify-center pl-[64px]">
-        <span
+        {/* Icon zone */}
+        <div
           className={cn(
-            "font-semibold font-sans text-[18px] leading-none whitespace-nowrap",
-            isVerified
-              ? "text-[#14bd47]"
-              : theme === "dark"
-                ? "text-white"
-                : "text-black",
+            "absolute left-[3px] top-[3px] flex h-[46px] w-[60px] items-center justify-center rounded-xl",
+            isVerified ? "vwb-verified-gradient" : "vwb-full-gradient",
           )}
         >
-          {isVerified ? "Wallet Verified" : "Verify Wallet"}
-        </span>
+          {isVerified ? (
+            <CheckSmallIcon className="h-[18px] w-[21px] scale-150" />
+          ) : (
+            <WalletSmallIcon className="size-[32px] text-white mt-[4px]" />
+          )}
+        </div>
+        {/* Label */}
+        <div className="flex flex-1 items-center justify-center pl-[64px]">
+          <span
+            className={cn(
+              "font-semibold font-sans text-[18px] leading-none whitespace-nowrap",
+              isVerified
+                ? "text-[#14bd47]"
+                : theme === "dark"
+                  ? "text-white"
+                  : "text-black",
+            )}
+          >
+            {isVerified ? "Wallet Verified" : "Verify Wallet"}
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -389,7 +422,7 @@ function OutlinedWideInner({ state }: InnerProps) {
         {isVerified ? (
           <CheckSmallIcon className="h-[18px] w-[21px] text-white" />
         ) : (
-          <ShieldAlertIcon className="h-[19px] w-[22px] text-white" />
+          <WalletSmallIcon className="h-[19px] w-[22px] text-white" />
         )}
       </div>
       {/* Gradient bar right */}
@@ -402,33 +435,6 @@ function OutlinedWideInner({ state }: InnerProps) {
         <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
           {isVerified ? "Wallet Verified" : "Verify Wallet"}
         </span>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Gradient Compact
- */
-function GradientCompactInner({ state }: InnerProps) {
-  const isVerified = state === "verified";
-  return (
-    <div className={cn("rounded-2xl vwb-full-gradient")}>
-      <div className={cn("rounded-2xl p-px", "vwb-gradient-border-dark")}>
-        <div
-          className={cn(
-            "flex items-center gap-[12px] rounded-[15px] px-[12px] py-[8px]",
-            "vwb-full-gradient",
-          )}
-        >
-          <ChainGroupIcon
-            verified={isVerified}
-            className="h-[40px] w-[68px] shrink-0"
-          />
-          <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
-            Verify Wallet
-          </span>
-        </div>
       </div>
     </div>
   );
