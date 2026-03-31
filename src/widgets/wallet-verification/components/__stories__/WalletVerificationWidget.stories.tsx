@@ -156,19 +156,19 @@ export const MixedStatuses: Story = {
       entries: [
         {
           id: "1",
-          network: { name: "Ethereum", icon: "networks/ethereum.png" },
+          network: { name: "Ethereum", icon: "tokens/eth.svg" },
           status: WalletBadges.UNVERIFIED,
           statusLabel: "Verified",
         },
         {
           id: "2",
-          network: { name: "Base", icon: "networks/base.png" },
+          network: { name: "Base", icon: "tokens/base.svg" },
           status: WalletBadges.BASIC,
           statusLabel: "Unverified",
         },
         {
           id: "3",
-          network: { name: "Arbitrum", icon: "networks/arbitrum.png" },
+          network: { name: "Arbitrum", icon: "tokens/arbitrum.svg" },
           status: WalletBadges.LEGENDARY,
           isOutdated: true,
           statusLabel: "Outdated",
