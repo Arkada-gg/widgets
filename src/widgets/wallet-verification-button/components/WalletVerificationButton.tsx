@@ -1,10 +1,16 @@
-import { VerifyWalletButton } from "@/widgets/verify-wallet-button";
+import type { WidgetTheme } from "@/shared/config";
+import {
+  VerifyWalletButton,
+  type VerifyWalletVariant,
+} from "@/widgets/verify-wallet-button";
 import { useWalletVerification } from "../hooks/useWalletVerification";
 
 const VERIFICATION_URL = "https://app.arkada.gg/en/wallet";
 
 export interface WalletVerificationButtonProps {
   walletAddress: string;
+  theme?: WidgetTheme;
+  variant?: VerifyWalletVariant;
 }
 
 /**
@@ -12,12 +18,17 @@ export interface WalletVerificationButtonProps {
  *
  * Fetches verification status for the given address on mount,
  * then delegates all visual rendering to VerifyWalletButton.
- * Theme/variant are handled by the consumer externally.
  */
 export function WalletVerificationButton({
   walletAddress,
+  theme,
+  variant,
 }: WalletVerificationButtonProps) {
-  const { isVerified, isLoading } = useWalletVerification(walletAddress);
+  const { isVerified, isLoading, error } = useWalletVerification(walletAddress);
+
+  if (process.env.NODE_ENV !== "production" && error) {
+    console.warn("[WalletVerificationButton] Failed to fetch status:", error);
+  }
 
   const handleVerify = () => {
     window.open(
@@ -30,10 +41,12 @@ export function WalletVerificationButton({
   return (
     <VerifyWalletButton
       state={isVerified ? "verified" : "unverified"}
+      theme={theme}
+      variant={variant}
       onVerify={handleVerify}
-      // Disable interaction while the status is being fetched
       disabled={isLoading}
       aria-busy={isLoading}
+      style={{ opacity: isLoading ? 0.6 : 1, cursor: isLoading ? "not-allowed" : "pointer" }}
     />
   );
 }

@@ -14,17 +14,15 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
+        // Main bundle — all ready web components in one file
         "arkada-widgets": resolve(
           __dirname,
           "src/web-components/index.ts",
         ),
-        "arkada-wv-widget": resolve(
+        // Standalone smart button — can be loaded independently
+        "arkada-wvbs-widget": resolve(
           __dirname,
-          "src/web-components/arkada-wv-widget.ts",
-        ),
-        "arkada-vwb-widget": resolve(
-          __dirname,
-          "src/web-components/arkada-vwb-widget.tsx",
+          "src/web-components/arkada-wvbs-widget.tsx",
         ),
       },
       formats: ["es"],
