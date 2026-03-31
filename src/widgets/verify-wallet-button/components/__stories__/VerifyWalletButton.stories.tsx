@@ -45,27 +45,69 @@ export const CompactVerified: Story = {
 export const CompactLight: Story = {
   args: { variant: "compact", theme: "light" },
 };
+export const CompactLightVerified: Story = {
+  args: { variant: "compact", state: "verified", theme: "light" },
+};
 export const CompactMinimal: Story = { args: { variant: "compact-minimal" } };
+export const CompactMinimalVerified: Story = {
+  args: { variant: "compact-minimal", state: "verified" },
+};
 export const CompactMinimalLight: Story = {
   args: { variant: "compact-minimal", theme: "light" },
 };
-export const Gradient: Story = { args: { variant: "compact-gradient" } };
+export const CompactMinimalLightVerified: Story = {
+  args: { variant: "compact-minimal", theme: "light", state: "verified" },
+};
+export const CompactGradient: Story = { args: { variant: "compact-gradient" } };
+export const CompactGradientVerified: Story = {
+  args: { variant: "compact-gradient", state: "verified" },
+};
 export const Banner: Story = { args: { variant: "banner" } };
+export const BannerVerified: Story = {
+  args: { variant: "banner", state: "verified" },
+};
 export const BannerLight: Story = {
   args: { variant: "banner", theme: "light" },
 };
+export const BannerLightVerified: Story = {
+  args: { variant: "banner", theme: "light", state: "verified" },
+};
 export const Floating: Story = { args: { variant: "floating" } };
+export const FloatingVerified: Story = {
+  args: { variant: "floating", state: "verified" },
+};
 export const FloatingGradient: Story = {
   args: { variant: "floating-gradient" },
 };
+export const FloatingGradientVerified: Story = {
+  args: { variant: "floating-gradient", state: "verified" },
+};
 export const Pill: Story = { args: { variant: "pill" } };
+export const PillVerified: Story = {
+  args: { variant: "pill", state: "verified" },
+};
 export const PillLight: Story = { args: { variant: "pill", theme: "light" } };
+export const PillLightVerified: Story = {
+  args: { variant: "pill", theme: "light", state: "verified" },
+};
 export const PillWide: Story = { args: { variant: "pill-wide" } };
+export const PillWideVerified: Story = {
+  args: { variant: "pill-wide", state: "verified" },
+};
 export const Outlined: Story = { args: { variant: "outlined" } };
+export const OutlinedVerified: Story = {
+  args: { variant: "outlined", state: "verified" },
+};
 export const OutlinedLight: Story = {
   args: { variant: "outlined", theme: "light" },
 };
+export const OutlinedLightVerified: Story = {
+  args: { variant: "outlined", theme: "light", state: "verified" },
+};
 export const OutlinedWide: Story = { args: { variant: "outlined-wide" } };
+export const OutlinedWideVerified: Story = {
+  args: { variant: "outlined-wide", state: "verified" },
+};
 
 /* ---- Full state matrix — dark ---- */
 
