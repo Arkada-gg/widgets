@@ -21,6 +21,10 @@ export default defineConfig({
           __dirname,
           "src/web-components/arkada-wv-widget.ts",
         ),
+        "arkada-vwb-widget": resolve(
+          __dirname,
+          "src/web-components/arkada-vwb-widget.tsx",
+        ),
       },
       formats: ["es"],
     },

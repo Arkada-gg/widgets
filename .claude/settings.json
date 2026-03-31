@@ -1,5 +1,9 @@
 {
   "permissions": {
-    "allow": []
+    "allow": [
+      "mcp__figma__get_design_context",
+      "Bash(npx storybook:*)",
+      "mcp__figma__get_screenshot"
+    ]
   }
 }

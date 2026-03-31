@@ -1,0 +1,82 @@
+/* ===========================
+   Verify Wallet Button — Gradients & effects
+   Exact values extracted from Figma designs.
+   =========================== */
+
+/* ---- Text gradient (Groups 1–4, 8–9) ---- */
+.vwb-gradient-text {
+  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- CTA bar gradient (Groups 5, 7, 12, 15) ---- */
+.vwb-cta-gradient {
+  background: linear-gradient(90deg, #c94f6b 0%, #9b5bb5 40%, #5377ff 100%);
+  box-shadow: 0px 0px 6px 0px #be66b3;
+}
+
+/* ---- Icon-zone / pill gradient (Groups 10–15 icon zone) ---- */
+.vwb-icon-gradient {
+  background: linear-gradient(90deg, #c94f6b 0%, #9b5bb5 40%, #5377ff 100%);
+}
+
+/* ---- Verified green gradient (Groups 5–7, 10–15) ---- */
+.vwb-verified-gradient {
+  background: linear-gradient(78.12deg, #236f3c 0%, #43c36d 100%);
+}
+
+/* ---- Container gradient border — dark (Groups 1, 5) ---- */
+.vwb-border-dark {
+  background: linear-gradient(90deg, #000000 0%, #2d2d2d 50%, #000000 100%);
+}
+
+/* ---- Container gradient border — light (Groups 2, 6) ---- */
+.vwb-border-light-compact {
+  background: linear-gradient(90deg, #d2d2d2 0%, #ffffff 50%, #d2d2d2 100%);
+}
+
+/* ---- Container gradient border — light banner (Group 6) ---- */
+.vwb-border-light-banner {
+  background: linear-gradient(90deg, #efefef 0%, #ffffff 50%, #efefef 100%);
+}
+
+/* ---- Full gradient background inactive (Group 16 inactive) ---- */
+.vwb-full-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(190, 102, 179, 0.6) 0%,
+    rgba(123, 91, 191, 0.45) 50%,
+    rgba(83, 119, 255, 0.6) 100%
+  );
+}
+
+/* ---- Full gradient background active (Group 16 active) ---- */
+.vwb-full-gradient-active {
+  background: linear-gradient(
+    90deg,
+    rgba(190, 102, 179, 0.85) 0%,
+    rgba(123, 91, 191, 0.65) 50%,
+    rgba(83, 119, 255, 0.85) 100%
+  );
+}
+
+/* ---- Hover / press feedback ---- */
+.vwb-interactive {
+  transition: filter 150ms ease, transform 150ms ease;
+}
+
+.vwb-interactive:hover {
+  filter: brightness(1.08);
+}
+
+.vwb-interactive:active {
+  filter: brightness(0.95);
+  transform: scale(0.98);
+}
+
+.vwb-interactive:focus-visible {
+  outline: 2px solid #00b17e;
+  outline-offset: 2px;
+}
