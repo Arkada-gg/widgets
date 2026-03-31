@@ -39,6 +39,9 @@ type Story = StoryObj<typeof VerifyWalletButton>;
 /* ---- Individual variants ---- */
 
 export const Compact: Story = { args: { variant: "compact" } };
+export const CompactVerified: Story = {
+  args: { variant: "compact", state: "verified" },
+};
 export const CompactLight: Story = {
   args: { variant: "compact", theme: "light" },
 };
@@ -63,21 +66,6 @@ export const OutlinedLight: Story = {
   args: { variant: "outlined", theme: "light" },
 };
 export const OutlinedWide: Story = { args: { variant: "outlined-wide" } };
-
-/* ---- State variants ---- */
-
-export const Verified: Story = {
-  args: { state: "verified", variant: "compact" },
-};
-export const VerifiedBanner: Story = {
-  args: { state: "verified", variant: "banner" },
-};
-export const VerifiedFloating: Story = {
-  args: { state: "verified", variant: "floating" },
-};
-export const VerifiedPill: Story = {
-  args: { state: "verified", variant: "pill" },
-};
 
 /* ---- Full state matrix — dark ---- */
 

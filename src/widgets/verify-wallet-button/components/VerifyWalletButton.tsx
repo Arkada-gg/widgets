@@ -403,7 +403,7 @@ function OutlinedInner({ state, theme }: InnerProps) {
 }
 
 /**
- * Group 15: Outlined Wide
+ * Outlined Wide
  * Status border + icon on left side + gradient bar on right.
  * Unverified: shield icon left, gradient bar right, white text.
  * Verified: check icon left, gradient bar right, white text.
@@ -413,28 +413,34 @@ function OutlinedWideInner({ state }: InnerProps) {
   return (
     <div
       className={cn(
-        "relative flex h-[54px] w-[220px] items-center rounded-[16px] border bg-black",
-        isVerified ? "border-[#13b343]" : "border-[#ff6a59]",
+        "relative flex h-[54px] w-[220px] items-center rounded-2xl p-px",
+        isVerified ? "bg-[#13b343]" : "vwb-full-gradient",
       )}
     >
-      {/* Icon left */}
-      <div className="absolute left-[16px] top-1/2 z-10 -translate-y-1/2">
-        {isVerified ? (
-          <CheckSmallIcon className="h-[18px] w-[21px] text-white" />
-        ) : (
-          <WalletSmallIcon className="h-[19px] w-[22px] text-white" />
-        )}
-      </div>
-      {/* Gradient bar right */}
       <div
         className={cn(
-          "absolute right-[4px] top-[4px] flex h-[46px] w-[148px] items-center justify-center rounded-[16px]",
-          isVerified ? "vwb-verified-gradient" : "vwb-icon-gradient",
+          "relative flex h-full w-full items-center rounded-[15px] bg-black",
         )}
       >
-        <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
-          {isVerified ? "Wallet Verified" : "Verify Wallet"}
-        </span>
+        {/* Icon left */}
+        <div className="absolute left-6 top-1/2 z-10 -translate-y-1/2">
+          {isVerified ? (
+            <CheckSmallIcon className="h-[18px] w-[21px] text-white scale-150" />
+          ) : (
+            <WalletSmallIcon className="h-[19px] w-[22px] text-white scale-150 mt-1" />
+          )}
+        </div>
+        {/* Gradient bar right */}
+        <div
+          className={cn(
+            "absolute right-[3px] top-[3px] flex h-[46px] w-[148px] items-center justify-center rounded-xl",
+            isVerified ? "vwb-verified-gradient" : "vwb-full-gradient",
+          )}
+        >
+          <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
+            {isVerified ? "Wallet Verified" : "Verify Wallet"}
+          </span>
+        </div>
       </div>
     </div>
   );
