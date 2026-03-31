@@ -8,26 +8,28 @@
  */
 
 export const VerifyWalletVariants = {
-  /** Chain icon group + gradient text, gradient border (Groups 1–2) */
+  /** Chain icon group + gradient text, gradient border */
   COMPACT: "compact",
-  /** Toggle icon + gradient text, flat solid bg (Groups 3–4) */
+  /** Toggle icon + gradient text, flat solid bg */
   COMPACT_MINIMAL: "compact-minimal",
-  /** Icon + full-width CTA gradient bar (Groups 5–6) */
+  /** Full gradient background — premium look */
+  COMPACT_GRADIENT: "compact-gradient",
+  /** Icon + full-width CTA gradient bar */
   BANNER: "banner",
-  /** 60px circle overlapping a gradient CTA bar (Group 7) */
+  /** 60px circle overlapping a light/dark bar */
   FLOATING: "floating",
-  /** 60px circle overlapping a solid-color bar, gradient text (Groups 8–9) */
+  /** 60px circle overlapping a gradient CTA bar */
+  FLOATING_GRADIENT: "floating-gradient",
+  /** 60px circle overlapping a solid-color bar, gradient text */
   FLOATING_SUBTLE: "floating-subtle",
-  /** Gradient icon zone left + text right (Groups 10–11) */
+  /** Gradient icon zone left + text right */
   PILL: "pill",
-  /** Full-width gradient with chevrons (Group 12) */
+  /** Full-width gradient with chevrons */
   PILL_WIDE: "pill-wide",
-  /** Pill with status-colored border (Groups 13–14) */
+  /** Pill with status-colored border */
   OUTLINED: "outlined",
-  /** Full gradient bar inside status border (Group 15) */
+  /** Full gradient bar inside status border */
   OUTLINED_WIDE: "outlined-wide",
-  /** Full gradient background — premium look (Group 16) */
-  GRADIENT: "gradient-compact",
 } as const;
 
 export type VerifyWalletVariant =

@@ -22,7 +22,7 @@ const meta: Meta<typeof VerifyWalletButton> = {
       <div
         style={{
           padding: 32,
-          background: ctx.args.theme === "light" ? "#f7f7f7" : "#111",
+          background: ctx.args.theme === "light" ? "#f7f7f7" : "#393939",
           borderRadius: 12,
           display: "inline-flex",
         }}
@@ -46,11 +46,15 @@ export const CompactMinimal: Story = { args: { variant: "compact-minimal" } };
 export const CompactMinimalLight: Story = {
   args: { variant: "compact-minimal", theme: "light" },
 };
+export const Gradient: Story = { args: { variant: "compact-gradient" } };
 export const Banner: Story = { args: { variant: "banner" } };
 export const BannerLight: Story = {
   args: { variant: "banner", theme: "light" },
 };
 export const Floating: Story = { args: { variant: "floating" } };
+export const FloatingGradient: Story = {
+  args: { variant: "floating-gradient" },
+};
 export const FloatingSubtle: Story = { args: { variant: "floating-subtle" } };
 export const FloatingSubtleLight: Story = {
   args: { variant: "floating-subtle", theme: "light" },
@@ -63,7 +67,6 @@ export const OutlinedLight: Story = {
   args: { variant: "outlined", theme: "light" },
 };
 export const OutlinedWide: Story = { args: { variant: "outlined-wide" } };
-export const Gradient: Story = { args: { variant: "gradient-compact" } };
 
 /* ---- State variants ---- */
 

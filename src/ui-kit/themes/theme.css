@@ -7,6 +7,7 @@
 /* Dark theme (default) */
 [data-theme="dark"] {
   --arkada-bg: #000000;
+  --arkada-bg-accent: #000000;
   --arkada-bg-header: #1c1c1c;
   --arkada-bg-card: rgba(28, 28, 28, 0.7);
   --arkada-bg-overlay: rgba(255, 255, 255, 0.05);
@@ -38,6 +39,7 @@
 /* Light theme */
 [data-theme="light"] {
   --arkada-bg: #f7f7f7;
+  --arkada-bg-accent: #ffffff;
   --arkada-bg-header: #ffffff;
   --arkada-bg-card: rgba(255, 255, 255, 0.7);
   --arkada-bg-overlay: rgba(0, 0, 0, 0.5);

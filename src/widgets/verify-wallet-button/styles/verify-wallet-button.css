@@ -23,7 +23,7 @@
   );
 }
 
-/* ---- Text gradient (Groups 1–4, 8–9) ---- */
+/* ---- Text gradient ---- */
 .vwb-gradient-text {
   background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
   -webkit-background-clip: text;
@@ -31,13 +31,42 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* ---- CTA bar gradient (Groups 5, 7, 12, 15) ---- */
+/* ---- CTA bar gradient ---- */
 .vwb-cta-gradient {
   background: linear-gradient(90deg, #c94f6b 0%, #9b5bb5 40%, #5377ff 100%);
   box-shadow: 0px 0px 6px 0px #be66b3;
 }
 
-/* ---- Icon-zone / pill gradient (Groups 10–15 icon zone) ---- */
+/* ---- Floating gradients ---- */
+.vwb-floating-nv-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(217, 217, 217, 0.5) 0%,
+    rgba(115, 115, 115, 0.5) 100%
+  );
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.vwb-floating-nvc-gradient {
+  background: var(
+    --Gradient-base,
+    linear-gradient(
+      82deg,
+      rgba(255, 106, 89, 0.5) -12.41%,
+      rgba(83, 119, 255, 0.5) 111.55%
+    )
+  );
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.vwb-floating-v-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(125, 239, 163, 0.5) 0%,
+    rgba(43, 180, 89, 0.5) 100%
+  );
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ---- Icon-zone / pill gradient ---- */
 .vwb-icon-gradient {
   background: linear-gradient(90deg, #c94f6b 0%, #9b5bb5 40%, #5377ff 100%);
 }

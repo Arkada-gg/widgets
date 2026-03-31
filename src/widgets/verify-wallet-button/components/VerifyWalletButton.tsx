@@ -11,11 +11,13 @@ import {
 import "../styles/verify-wallet-button.css";
 import {
   ChainGroupIcon,
+  CheckCircleFilledIcon,
   CheckCircleIcon,
   CheckSmallIcon,
   ChevronsRightIcon,
   ShieldAlertIcon,
   ToggleIcon,
+  WalletCircleGradientIcon,
   WalletCircleIcon,
 } from "./icons";
 
@@ -110,73 +112,119 @@ function CompactMinimalInner({ state, theme }: InnerProps) {
 }
 
 /**
- * Groups 5–6: Banner
- * Gradient border container, icon (40×40), full-width CTA bar.
- * w-260, p-6, gap-6, rounded-16, border 1px white/50.
- * Unverified CTA: purple gradient bar with shadow, white text.
- * Verified CTA: green gradient bar, white text "Wallet Verified".
+ * Banner
  */
 function BannerInner({ state, theme }: InnerProps) {
   const isVerified = state === "verified";
   return (
     <div
-      className={cn(
-        "flex w-[260px] items-center gap-[6px] rounded-[16px] border border-white/50 p-[6px]",
-        theme === "dark" ? "vwb-border-dark" : "vwb-border-light-banner",
-      )}
+      className={cn("rounded-2xl", theme === "dark" ? "bg-black" : "bg-white")}
     >
-      {/* Icon */}
-      <div className="shrink-0">
-        {isVerified ? (
-          <CheckCircleIcon className="size-[40px]" />
-        ) : (
-          <WalletCircleIcon className="size-[40px]" />
-        )}
-      </div>
-      {/* CTA bar */}
       <div
         className={cn(
-          "flex flex-1 items-center justify-center self-stretch rounded-[12px]",
-          isVerified ? "vwb-verified-gradient" : "vwb-cta-gradient",
+          "rounded-2xl p-px",
+          theme === "dark"
+            ? "vwb-gradient-border-dark"
+            : "vwb-gradient-border-light",
         )}
       >
-        <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
-          {isVerified ? "Wallet Verified" : "Verify Wallet"}
-        </span>
+        <div
+          className={cn(
+            "flex w-[260px] items-center gap-[6px] rounded-[15px] p-[6px]",
+            theme === "dark" ? "vwb-border-dark" : "vwb-border-light-banner",
+          )}
+        >
+          {/* Icon */}
+          <div className="shrink-0 shadow-2xl">
+            {isVerified ? (
+              <CheckCircleIcon className="size-[40px]" />
+            ) : (
+              <WalletCircleIcon className="size-[40px]" />
+            )}
+          </div>
+          {/* CTA bar */}
+          <div
+            className={cn(
+              "flex flex-1 items-center justify-center self-stretch rounded-xl",
+              isVerified ? "vwb-verified-gradient" : "vwb-cta-gradient",
+            )}
+          >
+            <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
+              {isVerified ? "Wallet Verified" : "Verify Wallet"}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 /**
- * Group 7: Floating
- * 60px circle icon overlapping a 40h×203w gradient CTA bar.
- * Bar offset: ml-[21px] from left edge of icon.
- * Unverified: gradient CTA bar, white text, gray wallet circle icon.
- * Verified: gradient CTA bar (green), white text, green check circle.
+ * Floating
  */
-function FloatingInner({ state }: InnerProps) {
+function FloatingGradientInner({ state }: InnerProps) {
   const isVerified = state === "verified";
   return (
-    <div className="relative flex h-[60px] items-center">
+    <div className="flex h-[60px] w-[224px] items-center justify-end">
       {/* CTA bar — behind the icon */}
       <div
         className={cn(
-          "absolute left-[21px] flex h-[40px] w-[203px] items-center justify-end rounded-[12px] px-[24px]",
-          isVerified ? "vwb-cta-gradient" : "vwb-cta-gradient",
+          "relative flex h-[40px] w-[203px] items-center rounded-xl pl-[53px] shadow-none!",
+          "vwb-cta-gradient",
         )}
       >
         <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
           {isVerified ? "Wallet Verified" : "Verify Wallet"}
         </span>
+        {/* Icon circle — overlaps bar on left */}
+        <div
+          className={cn(
+            "absolute left-0 z-10 rounded-[60px] size-[60px] -translate-x-[34%] p-[6px]",
+            isVerified ? "vwb-floating-v-gradient" : "vwb-floating-nv-gradient",
+          )}
+        >
+          {isVerified ? (
+            <CheckCircleFilledIcon className="size-full" />
+          ) : (
+            <WalletCircleIcon className="size-full" />
+          )}
+        </div>
       </div>
-      {/* Icon circle — overlaps bar on left */}
-      <div className="relative z-10 size-[60px] shrink-0">
-        {isVerified ? (
-          <CheckCircleIcon className="size-full" />
-        ) : (
-          <WalletCircleIcon className="size-full" />
+    </div>
+  );
+}
+
+/**
+ * Floating
+ */
+function FloatingInner({ state }: InnerProps) {
+  const isVerified = state === "verified";
+  return (
+    <div className="flex h-[60px] w-[224px] items-center justify-end">
+      {/* CTA bar — behind the icon */}
+      <div
+        className={cn(
+          "relative flex h-[40px] w-[203px] items-center rounded-xl pl-[53px] shadow-none! bg-(--arkada-bg-accent)",
         )}
+      >
+        <span className="font-semibold font-sans text-[18px] leading-none vwb-gradient-text whitespace-nowrap">
+          {isVerified ? "Wallet Verified" : "Verify Wallet"}
+        </span>
+        {/* Icon circle — overlaps bar on left */}
+        <div
+          className={cn(
+            "absolute left-0 z-10 rounded-[60px] size-[60px] -translate-x-[34%] p-[6px]",
+            isVerified
+              ? "vwb-floating-v-gradient"
+              : "vwb-floating-nvc-gradient",
+          )}
+        >
+          {isVerified ? (
+            <CheckCircleFilledIcon className="size-full" />
+          ) : (
+            <WalletCircleGradientIcon className="size-full" />
+          )}
+        </div>
       </div>
     </div>
   );
@@ -429,14 +477,15 @@ const VARIANT_MAP: Record<
 > = {
   [VerifyWalletVariants.COMPACT]: CompactInner,
   [VerifyWalletVariants.COMPACT_MINIMAL]: CompactMinimalInner,
+  [VerifyWalletVariants.COMPACT_GRADIENT]: GradientCompactInner,
   [VerifyWalletVariants.BANNER]: BannerInner,
   [VerifyWalletVariants.FLOATING]: FloatingInner,
+  [VerifyWalletVariants.FLOATING_GRADIENT]: FloatingGradientInner,
   [VerifyWalletVariants.FLOATING_SUBTLE]: FloatingSubtleInner,
   [VerifyWalletVariants.PILL]: PillInner,
   [VerifyWalletVariants.PILL_WIDE]: PillWideInner,
   [VerifyWalletVariants.OUTLINED]: OutlinedInner,
   [VerifyWalletVariants.OUTLINED_WIDE]: OutlinedWideInner,
-  [VerifyWalletVariants.GRADIENT]: GradientCompactInner,
 };
 
 /* ------------------------------------------------------------------ */
