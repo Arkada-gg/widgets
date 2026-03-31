@@ -16,12 +16,10 @@ export const VerifyWalletVariants = {
   COMPACT_GRADIENT: "compact-gradient",
   /** Icon + full-width CTA gradient bar */
   BANNER: "banner",
-  /** 60px circle overlapping a light/dark bar */
+  /** 60px circle overlapping a solid-color bar, gradient text */
   FLOATING: "floating",
   /** 60px circle overlapping a gradient CTA bar */
   FLOATING_GRADIENT: "floating-gradient",
-  /** 60px circle overlapping a solid-color bar, gradient text */
-  FLOATING_SUBTLE: "floating-subtle",
   /** Gradient icon zone left + text right */
   PILL: "pill",
   /** Full-width gradient with chevrons */

@@ -33,7 +33,7 @@
 
 /* ---- CTA bar gradient ---- */
 .vwb-cta-gradient {
-  background: linear-gradient(90deg, #c94f6b 0%, #9b5bb5 40%, #5377ff 100%);
+  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
   box-shadow: 0px 0px 6px 0px #be66b3;
 }
 
@@ -66,32 +66,27 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* ---- Icon-zone / pill gradient ---- */
-.vwb-icon-gradient {
-  background: linear-gradient(90deg, #c94f6b 0%, #9b5bb5 40%, #5377ff 100%);
-}
-
-/* ---- Verified green gradient (Groups 5–7, 10–15) ---- */
+/* ---- Verified green gradient ---- */
 .vwb-verified-gradient {
-  background: linear-gradient(78.12deg, #236f3c 0%, #43c36d 100%);
+  background: linear-gradient(90deg, #0e9035 0%, #14be47 100%);
 }
 
-/* ---- Container gradient border — dark (Groups 1, 5) ---- */
+/* ---- Container gradient bg — dark ---- */
 .vwb-border-dark {
   background: linear-gradient(90deg, #000000 0%, #2d2d2d 50%, #000000 100%);
 }
 
-/* ---- Container gradient border — light (Groups 2, 6) ---- */
+/* ---- Container gradient bg — light ---- */
 .vwb-border-light-compact {
   background: linear-gradient(90deg, #d2d2d2 0%, #ffffff 50%, #d2d2d2 100%);
 }
 
-/* ---- Container gradient border — light banner (Group 6) ---- */
+/* ---- Container gradient border — light banner ---- */
 .vwb-border-light-banner {
   background: linear-gradient(90deg, #efefef 0%, #ffffff 50%, #efefef 100%);
 }
 
-/* ---- Full gradient background inactive (Group 16 inactive) ---- */
+/* ---- Full gradient background inactive ---- */
 .vwb-full-gradient {
   background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
 }

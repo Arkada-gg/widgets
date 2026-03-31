@@ -55,10 +55,6 @@ export const Floating: Story = { args: { variant: "floating" } };
 export const FloatingGradient: Story = {
   args: { variant: "floating-gradient" },
 };
-export const FloatingSubtle: Story = { args: { variant: "floating-subtle" } };
-export const FloatingSubtleLight: Story = {
-  args: { variant: "floating-subtle", theme: "light" },
-};
 export const Pill: Story = { args: { variant: "pill" } };
 export const PillLight: Story = { args: { variant: "pill", theme: "light" } };
 export const PillWide: Story = { args: { variant: "pill-wide" } };

@@ -231,40 +231,7 @@ function FloatingInner({ state }: InnerProps) {
 }
 
 /**
- * Groups 8–9: Floating Subtle
- * Same layout as Floating but solid-color bar with gradient text.
- * Text stays "Verify Wallet" in both states — only the icon changes.
- * Dark: black bar. Light: white bar.
- */
-function FloatingSubtleInner({ state, theme }: InnerProps) {
-  const isVerified = state === "verified";
-  return (
-    <div className="relative flex h-[60px] items-center">
-      {/* Solid bar — behind the icon */}
-      <div
-        className={cn(
-          "absolute left-[21px] flex h-[40px] w-[203px] items-center justify-end rounded-[12px] px-[24px]",
-          theme === "dark" ? "bg-black" : "bg-white",
-        )}
-      >
-        <span className="vwb-gradient-text font-semibold font-sans text-[18px] leading-none whitespace-nowrap">
-          Verify Wallet
-        </span>
-      </div>
-      {/* Icon circle */}
-      <div className="relative z-10 size-[60px] shrink-0">
-        {isVerified ? (
-          <CheckCircleIcon className="size-full" />
-        ) : (
-          <WalletCircleIcon className="size-full" />
-        )}
-      </div>
-    </div>
-  );
-}
-
-/**
- * Groups 10–11: Pill
+ * Pill
  * bg solid, rounded-16, h-54, w-220.
  * Left: 60w×46h icon zone at 4px inset, rounded-16.
  *   Unverified: gradient bg + white chevrons.
@@ -278,19 +245,19 @@ function PillInner({ state, theme }: InnerProps) {
   return (
     <div
       className={cn(
-        "relative flex h-[54px] w-[220px] items-center rounded-[16px]",
+        "relative flex h-[54px] w-[220px] items-center rounded-2xl",
         theme === "dark" ? "bg-black" : "bg-white",
       )}
     >
       {/* Icon zone */}
       <div
         className={cn(
-          "absolute left-[4px] top-[4px] flex h-[46px] w-[60px] items-center justify-center rounded-[16px]",
-          isVerified ? "vwb-verified-gradient" : "vwb-icon-gradient",
+          "absolute left-[4px] top-[4px] flex h-[46px] w-[60px] items-center justify-center rounded-2xl",
+          isVerified ? "vwb-verified-gradient" : "vwb-full-gradient",
         )}
       >
         {isVerified ? (
-          <CheckSmallIcon className="h-[18px] w-[21px]" />
+          <CheckSmallIcon className="h-[18px] w-[21px] scale-150" />
         ) : (
           <ChevronsRightIcon className="size-[32px] text-white" />
         )}
@@ -315,7 +282,7 @@ function PillInner({ state, theme }: InnerProps) {
 }
 
 /**
- * Group 12: Pill Wide
+ * Pill Wide
  * bg black, rounded-16, h-54, w-220.
  * Unverified: full-width gradient bar (inset 4px, w-212, h-46),
  *   text "Verify Wallet" centered, chevrons icon on RIGHT.
@@ -325,15 +292,15 @@ function PillInner({ state, theme }: InnerProps) {
 function PillWideInner({ state }: InnerProps) {
   const isVerified = state === "verified";
   return (
-    <div className="relative flex h-[54px] w-[220px] items-center rounded-[16px] bg-black">
+    <div className="relative flex h-[54px] w-[220px] items-center rounded-2xl bg-black p-1">
       {isVerified ? (
         <>
           {/* Check icon left */}
-          <div className="absolute left-[16px] top-1/2 -translate-y-1/2 z-10">
-            <CheckSmallIcon className="h-[18px] w-[21px] text-white" />
+          <div className="absolute left-[24px] top-1/2 -translate-y-1/2 z-10">
+            <CheckSmallIcon className="h-[18px] w-[21px] text-white scale-150" />
           </div>
           {/* Gradient bar right */}
-          <div className="absolute right-[4px] top-[4px] flex h-[46px] w-[148px] items-center justify-center rounded-[16px] vwb-icon-gradient">
+          <div className="absolute right-[4px] top-[4px] flex h-[46px] w-[148px] items-center justify-center rounded-xl vwb-verified-gradient">
             <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
               Wallet Verified
             </span>
@@ -342,11 +309,11 @@ function PillWideInner({ state }: InnerProps) {
       ) : (
         <>
           {/* Full gradient bar */}
-          <div className="absolute left-[4px] top-[4px] flex h-[46px] w-[212px] items-center rounded-[16px] vwb-icon-gradient">
-            <span className="flex-1 font-semibold font-sans text-[18px] leading-none text-white text-center whitespace-nowrap">
+          <div className="flex h-[46px] w-full items-center justify-between rounded-xl vwb-full-gradient pl-4 pr-[8px]">
+            <p className="font-semibold font-sans text-[18px] leading-none text-white text-center whitespace-nowrap w-fit">
               Verify Wallet
-            </span>
-            <ChevronsRightIcon className="mr-[8px] size-[32px] text-white shrink-0" />
+            </p>
+            <ChevronsRightIcon className="size-[32px] text-white shrink-0" />
           </div>
         </>
       )}
@@ -481,7 +448,6 @@ const VARIANT_MAP: Record<
   [VerifyWalletVariants.BANNER]: BannerInner,
   [VerifyWalletVariants.FLOATING]: FloatingInner,
   [VerifyWalletVariants.FLOATING_GRADIENT]: FloatingGradientInner,
-  [VerifyWalletVariants.FLOATING_SUBTLE]: FloatingSubtleInner,
   [VerifyWalletVariants.PILL]: PillInner,
   [VerifyWalletVariants.PILL_WIDE]: PillWideInner,
   [VerifyWalletVariants.OUTLINED]: OutlinedInner,

@@ -754,25 +754,61 @@ export function CheckSmallIcon(props: IconProps) {
 export function ChevronsRightIcon(props: IconProps) {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
       viewBox="0 0 32 32"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        d="M8 8l8 8-8 8"
-        stroke="currentColor"
-        strokeWidth={2.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16 8l8 8-8 8"
-        stroke="currentColor"
-        strokeWidth={2.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <mask
+        id="mask0_8568_93157"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="32"
+        height="32"
+      >
+        <rect width="32" height="32" fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_8568_93157)">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M14.1257 7.13058C14.6787 6.57757 15.5746 6.57757 16.1277 7.13058L24.1384 15.1403C24.6914 15.6934 24.6914 16.5903 24.1384 17.1433L16.1277 25.154C15.5747 25.7067 14.6786 25.7068 14.1257 25.154C13.5727 24.601 13.5727 23.7041 14.1257 23.1511L21.1345 16.1413L14.1257 9.13253C13.5727 8.57956 13.5728 7.68361 14.1257 7.13058Z"
+          fill="url(#paint0_linear_8568_93157)"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M7.12556 7.12947C7.67849 6.57655 8.57545 6.57672 9.12849 7.12947L17.1392 15.1402L17.2369 15.2476C17.6905 15.8038 17.6577 16.6247 17.1392 17.1431L9.12849 25.1539C8.57546 25.7067 7.67852 25.7068 7.12556 25.1539C6.57271 24.6009 6.57275 23.704 7.12556 23.151L14.1343 16.1412L7.12556 9.1324C6.57281 8.57937 6.57265 7.6824 7.12556 7.12947Z"
+          fill="url(#paint1_linear_8568_93157)"
+        />
+      </g>
+      <defs>
+        <linearGradient
+          id="paint0_linear_8568_93157"
+          x1="24.4996"
+          y1="15.9999"
+          x2="14.9999"
+          y2="15.9999"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0.5" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_8568_93157"
+          x1="17.501"
+          y1="15.9995"
+          x2="5.99994"
+          y2="15.9995"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="white" stop-opacity="0.5" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }
