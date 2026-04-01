@@ -1,5 +1,6 @@
 import { cn } from "@/shared/utils/cn";
-import { WalletBadges } from "@/web-components";
+import { WalletBadges } from "@/widgets/wallet-verification";
+
 import { getBadgeConfig } from "@/widgets/wallet-verification/model/badge-config";
 
 export interface StatusIconProps {
