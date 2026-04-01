@@ -28,7 +28,10 @@ export function WalletVerificationButton({
   theme,
   variant,
 }: WalletVerificationButtonProps) {
-  const { isVerified, isLoading, error } = useWalletVerification(walletAddress, someVerified);
+  const { isVerified, isLoading, error } = useWalletVerification(
+    walletAddress,
+    someVerified,
+  );
 
   if (process.env.NODE_ENV !== "production" && error) {
     console.warn("[WalletVerificationButton] Failed to fetch status:", error);
