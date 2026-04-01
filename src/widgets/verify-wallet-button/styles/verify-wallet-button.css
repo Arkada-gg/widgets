@@ -12,6 +12,11 @@
   --wvb-gradient-end: #5377ff;
   --wvb-verified-start: #0e9035;
   --wvb-verified-end: #14be47;
+  --wvb-container-gradient-dark-sides: #000000;
+  --wvb-container-gradient-dark-middle: #2d2d2d;
+  --wvb-container-gradient-light-sides: #d2d2d2;
+  --wvb-container-gradient-light-middle: #ffffff;
+  --wvb-container-gradient-light-banner-sides: #efefef;
   --wvb-glow: #be66b3;
   --wvb-focus: #00b17e;
 }
@@ -98,17 +103,32 @@
 
 /* ---- Container gradient bg — dark ---- */
 .vwb-border-dark {
-  background: linear-gradient(90deg, #000000 0%, #2d2d2d 50%, #000000 100%);
+  background: linear-gradient(
+    90deg,
+    var(--wvb-container-gradient-dark-sides, #000000) 0%,
+    var(--wvb-container-gradient-dark-middle, #2d2d2d) 50%,
+    var(--wvb-container-gradient-dark-sides, #000000) 100%
+  );
 }
 
 /* ---- Container gradient bg — light ---- */
 .vwb-border-light-compact {
-  background: linear-gradient(90deg, #d2d2d2 0%, #ffffff 50%, #d2d2d2 100%);
+  background: linear-gradient(
+    90deg,
+    var(--wvb-container-gradient-light-sides, #d2d2d2) 0%,
+    var(--wvb-container-gradient-light-middle, #ffffff) 50%,
+    var(--wvb-container-gradient-light-sides, #d2d2d2) 100%
+  );
 }
 
 /* ---- Container gradient border — light banner ---- */
 .vwb-border-light-banner {
-  background: linear-gradient(90deg, #efefef 0%, #ffffff 50%, #efefef 100%);
+  background: linear-gradient(
+    90deg,
+    var(--wvb-container-gradient-light-banner-sides, #efefef) 0%,
+    var(--wvb-container-gradient-light-middle, #ffffff) 50%,
+    var(--wvb-container-gradient-light-banner-sides, #efefef) 100%
+  );
 }
 
 /* ---- Full gradient background inactive ---- */
