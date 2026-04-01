@@ -24,7 +24,7 @@ export interface WalletVerificationButtonProps {
 export function WalletVerificationButton({
   walletAddress,
   referralCode,
-  someVerified,
+  someVerified = true,
   theme,
   variant,
 }: WalletVerificationButtonProps) {
