@@ -11,6 +11,8 @@ const config: StorybookConfig = {
       ...config.resolve.alias,
       "@": new URL("../src", import.meta.url).pathname,
     };
+    config.build = config.build || {};
+    delete config.build.lib;
     if (configType === "PRODUCTION") {
       config.base = "/widgets/";
     }
