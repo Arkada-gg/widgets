@@ -1,5 +1,8 @@
 {
   "name": "@Arkada-gg/widgets",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "version": "1.0.1",
   "type": "module",
   "main": "dist/index.cjs",
