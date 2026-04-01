@@ -4,6 +4,7 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx)"],
   addons: ["@storybook/addon-docs"],
   framework: "@storybook/react-vite",
+  managerHead: (head) => `${head}<base href="/widgets/">`,
   viteFinal: (config, { configType }) => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
