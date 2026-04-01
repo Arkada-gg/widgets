@@ -1,6 +1,7 @@
 import type { WidgetTheme } from "@/shared/config";
 import type { VerifyWalletVariant } from "@/widgets/verify-wallet-button";
 import { WalletVerificationButton } from "@/widgets/wallet-verification-button";
+import widgetStyles from "@/widgets/verify-wallet-button/styles/verify-wallet-button.css?inline";
 import { createArkadaElement } from "./base/createArkadaElement";
 
 export interface WvbsData {
@@ -29,6 +30,7 @@ const ArkadaWvbsWidget = createArkadaElement<WvbsData>({
       variant={data.variant}
     />
   ),
+  widgetStyles,
 });
 
 if (!customElements.get("arkada-wvbs-widget")) {

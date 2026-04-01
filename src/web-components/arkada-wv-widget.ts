@@ -1,10 +1,12 @@
 import type { WalletVerificationData } from "@/widgets/wallet-verification";
 import { WalletVerificationWidget } from "@/widgets/wallet-verification";
+import widgetStyles from "@/widgets/wallet-verification/styles/widget.css?inline";
 import { createArkadaElement } from "./base/createArkadaElement";
 
 const ArkadaWvWidget = createArkadaElement<WalletVerificationData>({
   component: WalletVerificationWidget,
   observedAttributes: ["address"],
+  widgetStyles,
   events: {
     onVerify: {
       eventName: "verify",
