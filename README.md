@@ -2,6 +2,8 @@
 
 Production-ready widget library for the Arkada ecosystem. Widgets are available as standard React components and as self-contained Web Components for framework-agnostic embedding.
 
+**[Live Demo →](https://Arkada-gg.github.io/widgets/)**
+
 ## Table of Contents
 
 - [Installation](#installation)
