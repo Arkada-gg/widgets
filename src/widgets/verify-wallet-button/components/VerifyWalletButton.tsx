@@ -460,7 +460,7 @@ const VARIANT_MAP: Record<
 
 export function VerifyWalletButton({
   state = "unverified",
-  variant = "compact",
+  variant = "banner",
   theme = DEFAULT_THEME,
   onVerify,
   className,
@@ -471,9 +471,7 @@ export function VerifyWalletButton({
   const VariantRenderer = VARIANT_MAP[variant];
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (state === "unverified") {
-      onVerify?.();
-    }
+    onVerify?.();
     onClick?.(e);
   };
 
