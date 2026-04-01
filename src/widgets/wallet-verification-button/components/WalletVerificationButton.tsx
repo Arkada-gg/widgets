@@ -9,6 +9,8 @@ const VERIFICATION_URL = "https://app.arkada.gg/en/wallet";
 
 export interface WalletVerificationButtonProps {
   walletAddress: string;
+  referralCode?: string;
+  someVerified?: boolean;
   theme?: WidgetTheme;
   variant?: VerifyWalletVariant;
 }
@@ -21,10 +23,12 @@ export interface WalletVerificationButtonProps {
  */
 export function WalletVerificationButton({
   walletAddress,
+  referralCode,
+  someVerified,
   theme,
   variant,
 }: WalletVerificationButtonProps) {
-  const { isVerified, isLoading, error } = useWalletVerification(walletAddress);
+  const { isVerified, isLoading, error } = useWalletVerification(walletAddress, someVerified);
 
   if (process.env.NODE_ENV !== "production" && error) {
     console.warn("[WalletVerificationButton] Failed to fetch status:", error);
@@ -32,7 +36,7 @@ export function WalletVerificationButton({
 
   const handleVerify = () => {
     window.open(
-      `${VERIFICATION_URL}/${walletAddress}`,
+      `${VERIFICATION_URL}/${walletAddress}${referralCode ? `?ref=${referralCode}` : ""}`,
       "_blank",
       "noopener,noreferrer",
     );
@@ -46,7 +50,10 @@ export function WalletVerificationButton({
       onVerify={handleVerify}
       disabled={isLoading}
       aria-busy={isLoading}
-      style={{ opacity: isLoading ? 0.6 : 1, cursor: isLoading ? "not-allowed" : "pointer" }}
+      style={{
+        opacity: isLoading ? 0.6 : 1,
+        cursor: isLoading ? "not-allowed" : "pointer",
+      }}
     />
   );
 }

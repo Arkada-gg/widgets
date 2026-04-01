@@ -35,16 +35,17 @@ src/web-components/
 ## Data Flow
 
 ```
-walletAddress prop
+walletAddress, referralCode, someVerified props
       │
       ▼
-useWalletVerification(walletAddress)
+useWalletVerification(walletAddress, someVerified)
       │  GET /public/wallet/status/{address}
       │
       ├── isLoading: true  →  button disabled, opacity 0.6
       │
-      ├── success: global.rank > 0  →  state = "verified"
-      ├── success: global.rank = 0  →  state = "unverified"
+      ├── someVerified=false (default): global.rank > 0  →  state = "verified"
+      ├── someVerified=true:  any network.statusRank > 0  →  state = "verified"
+      ├── neither condition met  →  state = "unverified"
       │
       └── error  →  state = "unverified", console.warn in dev
                           │
@@ -53,14 +54,14 @@ useWalletVerification(walletAddress)
                   state / theme / variant
                           │
                           ▼ onClick (state = "unverified")
-                  window.open(VERIFICATION_URL/address)
+                  window.open(VERIFICATION_URL/address[?ref=referralCode])
 ```
 
 ---
 
 ## Verification Logic
 
-The API returns `WalletGlobalStatusDto.rank` as a number:
+The API returns `WalletGlobalStatusDto` with a global rank and per-network statuses.
 
 | `rank` | Meaning |
 |---|---|
@@ -68,13 +69,19 @@ The API returns `WalletGlobalStatusDto.rank` as a number:
 | `1–4` | Verified (lower tiers) |
 | `5` | Verified — Gold |
 
-The widget considers a wallet **verified** if `rank > 0`. There is no string "Unverified" in the API response — the numeric rank is the authoritative value.
+Two modes are supported, controlled by the `someVerified` prop:
 
+**Default (`someVerified` omitted or `false`)** — global verification:
 ```ts
-// useWalletVerification.ts
-const rank = res.data?.global?.rank ?? 0;
-setState({ isVerified: rank > 0, ... });
+isVerified = res.data?.global?.rank > 0
 ```
+
+**`someVerified: true`** — any-network verification:
+```ts
+isVerified = res.data?.networks.some((network) => network.statusRank > 0)
+```
+
+Use `someVerified: true` when a wallet should be considered verified if it has rank on at least one network, regardless of the global rank.
 
 ---
 
@@ -105,9 +112,12 @@ Verified/unverified states change the icon, label text, and color scheme within 
 // WalletVerificationButton.tsx
 const VERIFICATION_URL = "https://app.arkada.gg/en/wallet";
 // Opens: https://app.arkada.gg/en/wallet/{walletAddress}
+// With referral: https://app.arkada.gg/en/wallet/{walletAddress}?ref={referralCode}
 ```
 
-To change the URL, update the `VERIFICATION_URL` constant in `WalletVerificationButton.tsx`. This is intentionally a module-level constant — not a prop — because the destination is not consumer-configurable.
+To change the base URL, update the `VERIFICATION_URL` constant in `WalletVerificationButton.tsx`. This is intentionally a module-level constant — not a prop — because the destination is not consumer-configurable.
+
+Pass `referralCode` to append `?ref=<code>` to the verification URL.
 
 ---
 
@@ -157,4 +167,20 @@ There is no visible error UI — the button remains functional and the user can 
 ></arkada-wvbs-widget>
 ```
 
-`theme` is a top-level attribute (shared factory mechanism). `variant` is inside `data` because the factory does not support per-widget individual attributes. See [web-components.md](../web-components.md) for details.
+With referral code:
+```html
+<arkada-wvbs-widget
+  theme="dark"
+  data='{"walletAddress":"0xabc...", "referralCode":"MYREF", "variant":"banner"}'
+></arkada-wvbs-widget>
+```
+
+With any-network verification mode:
+```html
+<arkada-wvbs-widget
+  theme="dark"
+  data='{"walletAddress":"0xabc...", "someVerified":true}'
+></arkada-wvbs-widget>
+```
+
+`theme` is a top-level attribute (shared factory mechanism). All other props (`walletAddress`, `referralCode`, `someVerified`, `variant`) are inside `data` because the factory does not support per-widget individual attributes. See [web-components.md](../web-components.md) for details.

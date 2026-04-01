@@ -10,12 +10,15 @@ interface WalletVerificationState {
 /**
  * Fetches wallet verification status once on mount (re-fetches if address changes).
  *
- * Verification rule: global.rank > 0
- * The API returns a numeric rank where 0 = "Unverified".
- * Any rank above 0 indicates a verified tier (e.g. 5 = "Gold").
+ * someVerified === true:
+ * some network in response has rank > 0
+ *
+ * someVerified === false:
+ * global.rank > 0
  */
 export function useWalletVerification(
   walletAddress: string,
+  someVerified?: boolean,
 ): WalletVerificationState {
   const [state, setState] = useState<WalletVerificationState>({
     isVerified: false,
@@ -40,9 +43,11 @@ export function useWalletVerification(
         signal: controller.signal,
       })
       .then((res) => {
-        const rank = res.data?.global?.rank ?? 0;
+        const isVerified = someVerified
+          ? res.data?.networks.some((network) => network.statusRank > 0)
+          : res.data?.global?.rank > 0;
         setState({
-          isVerified: rank > 0,
+          isVerified,
           isLoading: false,
           error: null,
         });
