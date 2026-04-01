@@ -3,6 +3,19 @@
    Exact values extracted from Figma designs.
    =========================== */
 
+/* Widget-specific variable defaults.
+   :host applies in Shadow DOM (Web Component) context — consumer can override:
+     arkada-wvbs-widget { --wvb-gradient-start: #custom; --wvb-gradient-end: #custom }
+   In plain React / Storybook, :host is ignored and var() fallbacks apply. */
+:host {
+  --wvb-gradient-start: #ff6a59;
+  --wvb-gradient-end: #5377ff;
+  --wvb-verified-start: #0e9035;
+  --wvb-verified-end: #14be47;
+  --wvb-glow: #be66b3;
+  --wvb-focus: #00b17e;
+}
+
 .vwb-gradient-border-dark {
   background: linear-gradient(
     135deg,
@@ -25,7 +38,11 @@
 
 /* ---- Text gradient ---- */
 .vwb-gradient-text {
-  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
+  background: linear-gradient(
+    82deg,
+    var(--wvb-gradient-start, #ff6a59) -12.41%,
+    var(--wvb-gradient-end, #5377ff) 111.55%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -33,8 +50,12 @@
 
 /* ---- CTA bar gradient ---- */
 .vwb-cta-gradient {
-  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
-  box-shadow: 0px 0px 6px 0px #be66b3;
+  background: linear-gradient(
+    82deg,
+    var(--wvb-gradient-start, #ff6a59) -12.41%,
+    var(--wvb-gradient-end, #5377ff) 111.55%
+  );
+  box-shadow: 0px 0px 6px 0px var(--wvb-glow, #be66b3);
 }
 
 /* ---- Floating gradients ---- */
@@ -68,7 +89,11 @@
 
 /* ---- Verified green gradient ---- */
 .vwb-verified-gradient {
-  background: linear-gradient(90deg, #0e9035 0%, #14be47 100%);
+  background: linear-gradient(
+    90deg,
+    var(--wvb-verified-start, #0e9035) 0%,
+    var(--wvb-verified-end, #14be47) 100%
+  );
 }
 
 /* ---- Container gradient bg — dark ---- */
@@ -88,7 +113,11 @@
 
 /* ---- Full gradient background inactive ---- */
 .vwb-full-gradient {
-  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
+  background: linear-gradient(
+    82deg,
+    var(--wvb-gradient-start, #ff6a59) -12.41%,
+    var(--wvb-gradient-end, #5377ff) 111.55%
+  );
 }
 
 /* ---- Hover / press feedback ---- */
@@ -108,6 +137,6 @@
 }
 
 .vwb-interactive:focus-visible {
-  outline: 2px solid #00b17e;
+  outline: 2px solid var(--wvb-focus, #00b17e);
   outline-offset: 2px;
 }

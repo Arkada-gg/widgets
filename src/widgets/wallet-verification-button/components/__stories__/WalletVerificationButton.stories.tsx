@@ -29,7 +29,8 @@ function WvbsWebComponent({
   theme = "dark",
   referralCode,
   someVerified,
-}: WvbsData & { theme?: WidgetTheme }) {
+  style,
+}: WvbsData & { theme?: WidgetTheme; style?: Record<string, string> }) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -43,7 +44,12 @@ function WvbsWebComponent({
     };
     el.setAttribute("data", JSON.stringify(data));
     el.setAttribute("theme", theme);
-  }, [walletAddress, variant, theme, referralCode, someVerified]);
+    if (style) {
+      Object.entries(style).forEach(([k, v]) => {
+        (el as HTMLElement).style.setProperty(k, v as string);
+      });
+    }
+  }, [walletAddress, variant, theme, referralCode, someVerified, style]);
 
   return React.createElement("arkada-wvbs-widget", { ref });
 }
@@ -160,6 +166,113 @@ export const WebComponentPillWideLight: Story = {
           background: "#f7f7f7",
           borderRadius: 12,
           width: 480,
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// Customization examples — CSS variables applied on the host element
+// ---------------------------------------------------------------------------
+
+/**
+ * Custom brand gradient: orange → violet.
+ * Override --wvb-gradient-start / --wvb-gradient-end on the host element.
+ */
+export const WebComponentCustomGradient: Story = {
+  name: "Web Component — Custom Gradient",
+  render: () => (
+    <WvbsWebComponent
+      walletAddress={DEMO_ADDRESS}
+      variant="compact"
+      theme="dark"
+      style={{
+        "--wvb-gradient-start": "#ff8c00",
+        "--wvb-gradient-end": "#9b30ff",
+        "--wvb-glow": "#7b1fa2",
+      }}
+    />
+  ),
+};
+
+/**
+ * Custom brand theme: --arkada-bg, --arkada-border, gradient overridden.
+ * Shows full control over both shared and widget-specific variables.
+ */
+export const WebComponentCustomTheme: Story = {
+  name: "Web Component — Custom Theme (teal)",
+  render: () => (
+    <WvbsWebComponent
+      walletAddress={DEMO_ADDRESS}
+      variant="banner"
+      theme="dark"
+      style={{
+        "--arkada-bg": "#0a1f1f",
+        "--arkada-border": "#0d9488",
+        "--arkada-text-primary": "#ccfbf1",
+        "--arkada-text-secondary": "#5eead4",
+        "--wvb-gradient-start": "#0d9488",
+        "--wvb-gradient-end": "#0891b2",
+        "--wvb-verified-start": "#047857",
+        "--wvb-verified-end": "#059669",
+        "--wvb-glow": "#0d9488",
+        "--wvb-focus": "#14b8a6",
+      }}
+    />
+  ),
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 32,
+          background: "#0a1f1f",
+          borderRadius: 12,
+          width: 480,
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+/**
+ * React component with inline CSS variables — same customization API works
+ * in plain React context via the wrapping element's style prop.
+ */
+export const ReactCustomGradient: Story = {
+  name: "React — Custom Gradient (green)",
+  render: () => (
+    <div
+      style={
+        {
+          "--wvb-gradient-start": "#16a34a",
+          "--wvb-gradient-end": "#15803d",
+          "--wvb-verified-start": "#166534",
+          "--wvb-verified-end": "#15803d",
+          "--wvb-glow": "#14532d",
+          "--wvb-focus": "#16a34a",
+        } as React.CSSProperties
+      }
+    >
+      <WalletVerificationButton
+        walletAddress={DEMO_ADDRESS}
+        variant="compact"
+        theme="dark"
+      />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 32,
+          background: "#393939",
+          borderRadius: 12,
+          display: "inline-flex",
         }}
       >
         <Story />

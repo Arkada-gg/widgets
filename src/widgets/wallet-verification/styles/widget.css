@@ -1,7 +1,20 @@
 /* Widget-scoped styles for effects that can't be done purely with Tailwind */
 
+/* Widget-specific variable defaults.
+   :host applies in Shadow DOM (Web Component) context — consumer can override:
+     arkada-wv-widget { --wv-gradient-start: #custom; --wv-gradient-end: #custom }
+   In plain React / Storybook, :host is ignored and var() fallbacks apply. */
+:host {
+  --wv-gradient-start: #ff6a59;
+  --wv-gradient-end: #5377ff;
+}
+
 .arkada-wv-title-gradient {
-  background: linear-gradient(82deg, #ff6a59 -12.41%, #5377ff 111.55%);
+  background: linear-gradient(
+    82deg,
+    var(--wv-gradient-start, #ff6a59) -12.41%,
+    var(--wv-gradient-end, #5377ff) 111.55%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

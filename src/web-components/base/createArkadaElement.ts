@@ -174,6 +174,11 @@ export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
     }
 
     connectedCallback() {
+      // Ensure theme attribute is always present so :host([theme]) CSS matches.
+      // Without this, :host(:not([theme])) would be the only fallback selector.
+      if (!this.hasAttribute("theme")) {
+        this.setAttribute("theme", DEFAULT_THEME);
+      }
       this.style.display = "block";
       this._root = ReactDOM.createRoot(this._mountPoint);
       this._render();

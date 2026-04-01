@@ -4,8 +4,16 @@
    Applied via data-theme="dark|light" on the widget root.
    =========================== */
 
-/* Dark theme (default) */
-[data-theme="dark"] {
+/* ===========================
+   WEB COMPONENT — :host-based theming
+   Variables defined here allow consumer overrides. Per the CSS Scoping spec,
+   page-author styles targeting the host element beat :host rules:
+     arkada-wv-widget { --arkada-border: red }  ← always wins
+   Applied via `theme` attribute on the custom element.
+   =========================== */
+
+:host([theme="dark"]),
+:host(:not([theme])) {
   --arkada-bg: #000000;
   --arkada-bg-accent: #000000;
   --arkada-bg-header: #1c1c1c;
@@ -36,8 +44,7 @@
   --arkada-shadow-scores: 0px 12px 12px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* Light theme */
-[data-theme="light"] {
+:host([theme="light"]) {
   --arkada-bg: #f7f7f7;
   --arkada-bg-accent: #ffffff;
   --arkada-bg-header: #ffffff;
@@ -66,4 +73,35 @@
 
   --arkada-shadow-tab: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
   --arkada-shadow-scores: 0px 12px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset: force the inner [data-theme] div to inherit all variables from :host
+   instead of redefining them. Without this, [data-theme="dark"] inside shadow
+   DOM would override consumer-set values on the host element.
+   Specificity (0,2,0) beats [data-theme="dark"] (0,1,0). */
+:host([theme]) [data-theme],
+:host(:not([theme])) [data-theme] {
+  --arkada-bg: inherit;
+  --arkada-bg-accent: inherit;
+  --arkada-bg-header: inherit;
+  --arkada-bg-card: inherit;
+  --arkada-bg-overlay: inherit;
+  --arkada-bg-overlay-badge: inherit;
+  --arkada-bg-progress-track: inherit;
+  --arkada-text-primary: inherit;
+  --arkada-text-secondary: inherit;
+  --arkada-text-muted: inherit;
+  --arkada-text-scores: inherit;
+  --arkada-text-next-rank: inherit;
+  --arkada-border: inherit;
+  --arkada-divider: inherit;
+  --arkada-tab-bg: inherit;
+  --arkada-tab-border: inherit;
+  --arkada-tab-active-bg: inherit;
+  --arkada-tab-active-text: inherit;
+  --arkada-tab-inactive-text: inherit;
+  --arkada-progress-track: inherit;
+  --arkada-progress-track-shadow: inherit;
+  --arkada-shadow-tab: inherit;
+  --arkada-shadow-scores: inherit;
 }
