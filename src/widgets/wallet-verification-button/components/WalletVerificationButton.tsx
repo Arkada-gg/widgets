@@ -39,7 +39,7 @@ export function WalletVerificationButton({
 
   const handleVerify = () => {
     window.open(
-      `${VERIFICATION_URL}/${walletAddress}${referralCode ? `?ref=${referralCode}` : ""}`,
+      `${VERIFICATION_URL}${referralCode ? `?ref=${referralCode}` : ""}`,
       "_blank",
       "noopener,noreferrer",
     );

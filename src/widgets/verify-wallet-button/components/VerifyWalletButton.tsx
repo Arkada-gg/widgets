@@ -46,9 +46,7 @@ type InnerProps = { state: VerifyWalletState; theme: WidgetTheme };
  */
 function CompactInner({ state, theme }: InnerProps) {
   return (
-    <div
-      className={cn("rounded-2xl", theme === "dark" ? "bg-black" : "bg-white")}
-    >
+    <div className={cn("rounded-2xl bg-(--arkada-bg)")}>
       <div
         className={cn(
           "rounded-2xl p-px",
@@ -81,9 +79,7 @@ function CompactInner({ state, theme }: InnerProps) {
  */
 function CompactMinimalInner({ state, theme }: InnerProps) {
   return (
-    <div
-      className={cn("rounded-2xl", theme === "dark" ? "bg-black" : "bg-white")}
-    >
+    <div className={cn("rounded-2xl bg-(--arkada-bg)")}>
       <div
         className={cn(
           "rounded-2xl p-px",
@@ -95,7 +91,7 @@ function CompactMinimalInner({ state, theme }: InnerProps) {
         <div
           className={cn(
             "flex items-center gap-[12px] rounded-[15px] p-[12px]",
-            theme === "dark" ? "bg-[#1f1f1f]" : "bg-white",
+            "bg-(--arkada-bg-foreground)",
           )}
         >
           <ToggleIcon
@@ -129,7 +125,7 @@ function GradientCompactInner({ state }: InnerProps) {
             verified={isVerified}
             className="h-[40px] w-[68px] shrink-0"
           />
-          <span className="font-semibold font-sans text-[18px] leading-none text-white whitespace-nowrap">
+          <span className="font-semibold font-sans text-[18px] leading-none text-(--arkada-text-primary) whitespace-nowrap">
             Verify Wallet
           </span>
         </div>
@@ -144,9 +140,7 @@ function GradientCompactInner({ state }: InnerProps) {
 function BannerInner({ state, theme }: InnerProps) {
   const isVerified = state === "verified";
   return (
-    <div
-      className={cn("rounded-2xl", theme === "dark" ? "bg-black" : "bg-white")}
-    >
+    <div className={cn("rounded-2xl bg-(--arkada-bg)")}>
       <div
         className={cn(
           "rounded-2xl p-px",
@@ -267,13 +261,12 @@ function FloatingInner({ state }: InnerProps) {
  *   Unverified: white (dark) or black (light) text.
  *   Verified: #14bd47 green text "Wallet Verified".
  */
-function PillInner({ state, theme }: InnerProps) {
+function PillInner({ state }: InnerProps) {
   const isVerified = state === "verified";
   return (
     <div
       className={cn(
-        "relative flex h-[54px] w-[220px] items-center rounded-2xl",
-        theme === "dark" ? "bg-black" : "bg-white",
+        "relative flex h-[54px] w-[220px] items-center rounded-2xl bg-(--arkada-bg)",
       )}
     >
       {/* Icon zone */}
@@ -286,7 +279,7 @@ function PillInner({ state, theme }: InnerProps) {
         {isVerified ? (
           <CheckSmallIcon className="h-[18px] w-[21px] scale-150" />
         ) : (
-          <ChevronsRightIcon className="size-[32px] text-white" />
+          <ChevronsRightIcon className="size-[32px]" />
         )}
       </div>
       {/* Label */}
@@ -295,10 +288,8 @@ function PillInner({ state, theme }: InnerProps) {
           className={cn(
             "font-semibold font-sans text-[18px] leading-none whitespace-nowrap",
             isVerified
-              ? "text-[#14bd47]"
-              : theme === "dark"
-                ? "text-white"
-                : "text-black",
+              ? "text-(--color-accent)"
+              : "text-(--arkada-text-primary)",
           )}
         >
           {isVerified ? "Wallet Verified" : "Verify Wallet"}
@@ -354,19 +345,18 @@ function PillWideInner({ state }: InnerProps) {
  * Unverified: border #ff6a59 (red), shield icon in gradient zone.
  * Verified: border #13b343 (green), check in green gradient zone.
  */
-function OutlinedInner({ state, theme }: InnerProps) {
+function OutlinedInner({ state }: InnerProps) {
   const isVerified = state === "verified";
   return (
     <div
       className={cn(
         "relative flex h-[54px] w-[220px] items-center rounded-2xl p-px",
-        isVerified ? "bg-[#13b343]" : "vwb-full-gradient",
+        isVerified ? "bg-(--color-accent)" : "vwb-full-gradient",
       )}
     >
       <div
         className={cn(
-          "relative flex h-full w-full items-center rounded-[15px]",
-          theme === "dark" ? "bg-black" : "bg-white",
+          "relative flex h-full w-full items-center rounded-[15px] bg-(--arkada-bg)",
         )}
       >
         {/* Icon zone */}
@@ -379,7 +369,7 @@ function OutlinedInner({ state, theme }: InnerProps) {
           {isVerified ? (
             <CheckSmallIcon className="h-[18px] w-[21px] scale-150" />
           ) : (
-            <WalletSmallIcon className="size-[32px] text-white mt-[4px]" />
+            <WalletSmallIcon className="size-[32px] mt-[4px]" />
           )}
         </div>
         {/* Label */}
@@ -388,10 +378,8 @@ function OutlinedInner({ state, theme }: InnerProps) {
             className={cn(
               "font-semibold font-sans text-[18px] leading-none whitespace-nowrap",
               isVerified
-                ? "text-[#14bd47]"
-                : theme === "dark"
-                  ? "text-white"
-                  : "text-black",
+                ? "text-(--color-accent)"
+                : "text-(--arkada-text-primary)",
             )}
           >
             {isVerified ? "Wallet Verified" : "Verify Wallet"}
@@ -414,7 +402,7 @@ function OutlinedWideInner({ state }: InnerProps) {
     <div
       className={cn(
         "relative flex h-[54px] w-[220px] items-center rounded-2xl p-px",
-        isVerified ? "bg-[#13b343]" : "vwb-full-gradient",
+        isVerified ? "bg-(--color-accent)" : "vwb-full-gradient",
       )}
     >
       <div

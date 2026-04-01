@@ -4,9 +4,13 @@ Production-ready widget library for the Arkada ecosystem. Widgets are available 
 
 ## Table of Contents
 
+- [Installation](#installation)
+- [Usage](#usage)
+  - [React](#react)
+  - [Web Component](#web-component-vue-angular-svelte-etc)
+  - [Plain HTML](#plain-html)
 - [Widgets (Start Here)](#widgets-start-here)
   - [WalletVerificationButton](./docs/widgets/wallet-verification-button.md)
-- [Installation](#installation)
 - [Documentation](./docs/)
   - [Architecture](./docs/architecture.md)
   - [Web Components](./docs/web-components.md)
@@ -19,6 +23,131 @@ Production-ready widget library for the Arkada ecosystem. Widgets are available 
 
 ```bash
 npm install arkada-widgets
+```
+
+---
+
+## Usage
+
+### React
+
+```tsx
+import { WalletVerificationButton, VerifyWalletVariants } from 'arkada-widgets'
+
+export function App() {
+  return (
+    <WalletVerificationButton
+      walletAddress="0xYourWalletAddress"
+      theme="dark"
+      variant={VerifyWalletVariants.COMPACT}
+    />
+  )
+}
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `walletAddress` | `string` | — | Wallet address to check |
+| `theme` | `"dark" \| "light"` | `"dark"` | Color theme |
+| `variant` | `VerifyWalletVariant` | `"compact"` | Visual layout |
+| `referralCode` | `string` | — | Appended as `?ref=<code>` to the verification URL |
+| `someVerified` | `boolean` | — | Verified if any network has rank > 0 |
+
+---
+
+### Web Component (Vue, Angular, Svelte, etc.)
+
+Import once to register the custom element — no React needed in your project:
+
+```ts
+import 'arkada-widgets/arkada-wvbs-widget'
+```
+
+**Vue:**
+
+```vue
+<template>
+  <arkada-wvbs-widget
+    :data="JSON.stringify({ walletAddress: '0xYourWalletAddress' })"
+    theme="dark"
+  />
+</template>
+```
+
+**Angular** — add `CUSTOM_ELEMENTS_SCHEMA` to the module, then import in the component:
+
+```ts
+import 'arkada-widgets/arkada-wvbs-widget'
+```
+
+```html
+<arkada-wvbs-widget
+  [attr.data]="props"
+  theme="dark"
+></arkada-wvbs-widget>
+```
+
+**Svelte:**
+
+```svelte
+<script>
+  import 'arkada-widgets/arkada-wvbs-widget'
+  const props = JSON.stringify({ walletAddress: '0xYourWalletAddress' })
+</script>
+
+<arkada-wvbs-widget data={props} theme="dark" />
+```
+
+**Attributes:**
+
+| Attribute | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `data` | JSON string | — | Widget config (see shape below) |
+| `theme` | `"dark" \| "light"` | `"dark"` | Color theme |
+| `size` | `"sm" \| "lg"` | `"lg"` | Widget size |
+
+`data` JSON shape:
+
+```jsonc
+{
+  "walletAddress": "0x...",    // required
+  "variant": "compact",        // optional — visual layout
+  "referralCode": "MYREF",     // optional
+  "someVerified": false        // optional
+}
+```
+
+You can also set data as a JS object to skip JSON serialization:
+
+```js
+document.querySelector('arkada-wvbs-widget').data = { walletAddress: '0x...' }
+```
+
+---
+
+### Plain HTML
+
+No build step — load the script from a CDN:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
+
+  <arkada-wvbs-widget
+    data='{"walletAddress":"0xYourWalletAddress","variant":"compact"}'
+    theme="dark"
+  ></arkada-wvbs-widget>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/arkada-widgets/dist/arkada-wvbs-widget.js"></script>
+
+</body>
+</html>
 ```
 
 ---

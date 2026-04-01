@@ -200,11 +200,14 @@ This section documents only variables used by `WalletVerificationButton` itself:
 
 ## Complete Variable Reference
 
-### Theme token used by WalletVerificationButton (`--arkada-*`)
+### Theme tokens used by WalletVerificationButton (`--arkada-*`)
 
-| Variable | Dark default | Light default | Controls | Where used |
+| Variable | Dark default | Light default | Controls | Variants |
 | --- | ---: | ---: | --- | --- |
-| `--arkada-bg-accent` | `#000000` | `#ffffff` | Background of CTA bar in `floating` variant | `VerifyWalletButton.tsx` (`FloatingInner`: `bg-(--arkada-bg-accent)`) |
+| `--arkada-bg` | `#000000` | `#f7f7f7` | Outer background of the button | `compact`, `banner`, `pill`, `outlined` |
+| `--arkada-bg-foreground` | `#1f1f1f` | `#ffffff` | Inner background of the inner content block | `compact-minimal` |
+| `--arkada-bg-accent` | `#000000` | `#ffffff` | Background of the CTA bar | `floating` |
+| `--arkada-text-primary` | `#ffffff` | `#000000` | Label text color in unverified state | `pill`, `outlined` |
 
 ### WalletVerificationButton tokens (`--wvb-*`)
 
@@ -230,7 +233,10 @@ This section documents only variables used by `WalletVerificationButton` itself:
 
 ```css
 arkada-wvbs-widget {
+  --arkada-bg: #0a0a0a;
+  --arkada-bg-foreground: #161616;
   --arkada-bg-accent: #0f172a;
+  --arkada-text-primary: #f1f5f9;
   --wvb-gradient-start: #0d9488;
   --wvb-gradient-end: #0891b2;
   --wvb-verified-start: #047857;
@@ -253,7 +259,10 @@ arkada-wvbs-widget {
 <div
   style={
     {
+      "--arkada-bg": "#0a0a0a",
+      "--arkada-bg-foreground": "#161616",
       "--arkada-bg-accent": "#111827",
+      "--arkada-text-primary": "#f1f5f9",
       "--wvb-gradient-start": "#ff8c00",
       "--wvb-gradient-end": "#9b30ff",
       "--wvb-verified-start": "#6aa93a",
@@ -276,7 +285,7 @@ arkada-wvbs-widget {
 1. **Gradient-only branding**  
    Override `--wvb-gradient-start`, `--wvb-gradient-end`, and optionally `--wvb-glow`.
 2. **Full brand dark theme**  
-   Override `--arkada-bg-accent` plus button gradients: `--wvb-gradient-*`, `--wvb-verified-*`, `--wvb-glow`, `--wvb-focus`.
+   Override all four `--arkada-*` tokens (`--arkada-bg`, `--arkada-bg-foreground`, `--arkada-bg-accent`, `--arkada-text-primary`) plus button gradients: `--wvb-gradient-*`, `--wvb-verified-*`, `--wvb-glow`, `--wvb-focus`.
 3. **Light theme refinement**  
    Keep `theme="light"` and tune `--wvb-container-gradient-light-*` to improve container contrast.
 
