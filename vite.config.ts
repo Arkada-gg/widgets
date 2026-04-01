@@ -12,6 +12,7 @@ export default defineConfig({
     },
   },
   build: {
+    emptyOutDir: false,
     lib: {
       entry: {
         // Main bundle — all ready web components in one file

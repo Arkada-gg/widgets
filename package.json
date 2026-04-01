@@ -1,16 +1,18 @@
 {
   "name": "arkada-widgets",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
     "./arkada-wvbs-widget": {
+      "types": "./dist/web-components/arkada-wvbs-widget.d.ts",
       "import": "./dist/arkada-wvbs-widget.js"
     }
   },
@@ -19,7 +21,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "rm -rf dist && tsc -p tsconfig.lib.json && tsup && vite build",
     "build:lib": "tsup",
     "lint": "eslint .",
     "preview": "vite preview",

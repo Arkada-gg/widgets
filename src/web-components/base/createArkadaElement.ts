@@ -121,10 +121,10 @@ export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
   return class extends HTMLElement {
     static observedAttributes = allObserved;
 
-    private _root: ReactDOM.Root | null = null;
-    private _shadowRoot: ShadowRoot;
-    private _mountPoint: HTMLDivElement;
-    private _data: TData | null = null;
+    _root: ReactDOM.Root | null = null;
+    _shadowRoot: ShadowRoot;
+    _mountPoint: HTMLDivElement;
+    _data: TData | null = null;
 
     constructor() {
       super();
@@ -202,7 +202,7 @@ export function createArkadaElement<TData>(config: ArkadaElementConfig<TData>) {
       return this._data;
     }
 
-    private _render() {
+    _render() {
       if (!this._root) return;
 
       let data = this._data;
