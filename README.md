@@ -4,12 +4,12 @@ Production-ready widget library for the Arkada ecosystem. Widgets are available 
 
 ## Table of Contents
 
+- [Widgets (Start Here)](#widgets-start-here)
+  - [WalletVerificationButton](./docs/widgets/wallet-verification-button.md)
 - [Installation](#installation)
-- [Requirements](#requirements)
-- [Configuration](#configuration)
-- [Widgets](#widgets)
-  - [WalletVerificationButton](#walletverificationbutton)
-- [Web Components](#web-components)
+- [Documentation](./docs/)
+  - [Architecture](./docs/architecture.md)
+  - [Web Components](./docs/web-components.md)
 - [TypeScript](#typescript)
 - [Troubleshooting](#troubleshooting)
 
@@ -20,6 +20,14 @@ Production-ready widget library for the Arkada ecosystem. Widgets are available 
 ```bash
 npm install arkada-widgets
 ```
+
+---
+
+## Widgets (Start Here)
+
+Widget docs are prioritized for integrators:
+
+- `WalletVerificationButton` docs: `./docs/widgets/wallet-verification-button.md`
 
 ---
 
