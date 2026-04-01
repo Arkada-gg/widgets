@@ -240,6 +240,52 @@ export const WebComponentCustomTheme: Story = {
 };
 
 /**
+ * Fully customized Web Component example.
+ * Demonstrates overriding both shared and button-specific variables together.
+ */
+export const WebComponentFullyCustomized: Story = {
+  name: "Web Component — Fully Customized (sunset)",
+  render: () => (
+    <WvbsWebComponent
+      walletAddress={DEMO_ADDRESS}
+      variant="compact"
+      theme="light"
+      referralCode="SUNSET88"
+      style={{
+        "--arkada-bg-accent": "#fff7ed",
+        "--arkada-text-primary": "#7c2d12",
+        "--arkada-text-muted": "#9a3412",
+        "--wvb-gradient-start": "#f97316",
+        "--wvb-gradient-end": "#ec4899",
+        "--wvb-verified-start": "#16a34a",
+        "--wvb-verified-end": "#15803d",
+        "--wvb-container-gradient-dark-sides": "#1f2937",
+        "--wvb-container-gradient-dark-middle": "#374151",
+        "--wvb-container-gradient-light-sides": "#fed7aa",
+        "--wvb-container-gradient-light-middle": "#fff7ed",
+        "--wvb-container-gradient-light-banner-sides": "#ffedd5",
+        "--wvb-glow": "#fb923c",
+        "--wvb-focus": "#f97316",
+      }}
+    />
+  ),
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 32,
+          background: "#000",
+          borderRadius: 12,
+          width: 480,
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+/**
  * React component with inline CSS variables — same customization API works
  * in plain React context via the wrapping element's style prop.
  */
@@ -271,6 +317,55 @@ export const ReactCustomGradient: Story = {
         style={{
           padding: 32,
           background: "#393939",
+          borderRadius: 12,
+          display: "inline-flex",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+/**
+ * Fully customized React example with an extended token set.
+ */
+export const ReactFullyCustomized: Story = {
+  name: "React — Fully Customized (aurora)",
+  render: () => (
+    <div
+      style={
+        {
+          "--arkada-bg-accent": "#0b1020",
+          "--arkada-text-primary": "#e0f2fe",
+          "--arkada-text-muted": "#93c5fd",
+          "--wvb-gradient-start": "#06b6d4",
+          "--wvb-gradient-end": "#8b5cf6",
+          "--wvb-verified-start": "#22c55e",
+          "--wvb-verified-end": "#16a34a",
+          "--wvb-container-gradient-dark-sides": "#020617",
+          "--wvb-container-gradient-dark-middle": "#0f172a",
+          "--wvb-container-gradient-light-sides": "#bae6fd",
+          "--wvb-container-gradient-light-middle": "#e0f2fe",
+          "--wvb-container-gradient-light-banner-sides": "#cffafe",
+          "--wvb-glow": "#22d3ee",
+          "--wvb-focus": "#38bdf8",
+        } as React.CSSProperties
+      }
+    >
+      <WalletVerificationButton
+        walletAddress={DEMO_ADDRESS}
+        variant="floating"
+        theme="dark"
+      />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: 32,
+          background: "#ffffff",
           borderRadius: 12,
           display: "inline-flex",
         }}
