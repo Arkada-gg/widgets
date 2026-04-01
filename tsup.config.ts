@@ -12,4 +12,5 @@ export default defineConfig({
   clean: true,
   // React and React DOM must be provided by the consumer
   external: ["react", "react-dom"],
+  tsconfig: "tsconfig.lib.json",
 });
