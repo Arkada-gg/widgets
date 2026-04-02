@@ -2,7 +2,8 @@
 
 Production-ready widget library for the Arkada ecosystem. Widgets are available as standard React components and as self-contained Web Components for framework-agnostic embedding.
 
-**[Live Demo →](https://Arkada-gg.github.io/widgets/)**
+**[Live Demo →](https://Arkada-gg.github.io/widgets/)**  
+**[GitHub](https://github.com/Arkada-gg/widgets)**
 
 ## Table of Contents
 
@@ -34,7 +35,7 @@ npm install arkada-widgets
 ### React
 
 ```tsx
-import { WalletVerificationButton, VerifyWalletVariants } from 'arkada-widgets'
+import { WalletVerificationButton, VerifyWalletVariants } from "arkada-widgets";
 
 export function App() {
   return (
@@ -43,19 +44,19 @@ export function App() {
       theme="dark"
       variant={VerifyWalletVariants.COMPACT}
     />
-  )
+  );
 }
 ```
 
 **Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `walletAddress` | `string` | — | Wallet address to check |
-| `theme` | `"dark" \| "light"` | `"dark"` | Color theme |
-| `variant` | `VerifyWalletVariant` | `"compact"` | Visual layout |
-| `referralCode` | `string` | — | Appended as `?ref=<code>` to the verification URL |
-| `someVerified` | `boolean` | — | Verified if any network has rank > 0 |
+| Prop            | Type                  | Default     | Description                                       |
+| --------------- | --------------------- | ----------- | ------------------------------------------------- |
+| `walletAddress` | `string`              | —           | Wallet address to check                           |
+| `theme`         | `"dark" \| "light"`   | `"dark"`    | Color theme                                       |
+| `variant`       | `VerifyWalletVariant` | `"compact"` | Visual layout                                     |
+| `referralCode`  | `string`              | —           | Appended as `?ref=<code>` to the verification URL |
+| `someVerified`  | `boolean`             | —           | Verified if any network has rank > 0              |
 
 ---
 
@@ -64,7 +65,7 @@ export function App() {
 Import once to register the custom element — no React needed in your project:
 
 ```ts
-import 'arkada-widgets/arkada-wvbs-widget'
+import "arkada-widgets/arkada-wvbs-widget";
 ```
 
 **Vue:**
@@ -81,14 +82,11 @@ import 'arkada-widgets/arkada-wvbs-widget'
 **Angular** — add `CUSTOM_ELEMENTS_SCHEMA` to the module, then import in the component:
 
 ```ts
-import 'arkada-widgets/arkada-wvbs-widget'
+import "arkada-widgets/arkada-wvbs-widget";
 ```
 
 ```html
-<arkada-wvbs-widget
-  [attr.data]="props"
-  theme="dark"
-></arkada-wvbs-widget>
+<arkada-wvbs-widget [attr.data]="props" theme="dark"></arkada-wvbs-widget>
 ```
 
 **Svelte:**
@@ -104,27 +102,27 @@ import 'arkada-widgets/arkada-wvbs-widget'
 
 **Attributes:**
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `data` | JSON string | — | Widget config (see shape below) |
-| `theme` | `"dark" \| "light"` | `"dark"` | Color theme |
-| `size` | `"sm" \| "lg"` | `"lg"` | Widget size |
+| Attribute | Type                | Default  | Description                     |
+| --------- | ------------------- | -------- | ------------------------------- |
+| `data`    | JSON string         | —        | Widget config (see shape below) |
+| `theme`   | `"dark" \| "light"` | `"dark"` | Color theme                     |
+| `size`    | `"sm" \| "lg"`      | `"lg"`   | Widget size                     |
 
 `data` JSON shape:
 
 ```jsonc
 {
-  "walletAddress": "0x...",    // required
-  "variant": "compact",        // optional — visual layout
-  "referralCode": "MYREF",     // optional
-  "someVerified": false        // optional
+  "walletAddress": "0x...", // required
+  "variant": "compact", // optional — visual layout
+  "referralCode": "MYREF", // optional
+  "someVerified": false, // optional
 }
 ```
 
 You can also set data as a JS object to skip JSON serialization:
 
 ```js
-document.querySelector('arkada-wvbs-widget').data = { walletAddress: '0x...' }
+document.querySelector("arkada-wvbs-widget").data = { walletAddress: "0x..." };
 ```
 
 ---
@@ -136,19 +134,20 @@ No build step — load the script from a CDN:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <arkada-wvbs-widget
+      data='{"walletAddress":"0xYourWalletAddress","variant":"compact"}'
+      theme="dark"
+    ></arkada-wvbs-widget>
 
-  <arkada-wvbs-widget
-    data='{"walletAddress":"0xYourWalletAddress","variant":"compact"}'
-    theme="dark"
-  ></arkada-wvbs-widget>
-
-  <script type="module" src="https://cdn.jsdelivr.net/npm/arkada-widgets/dist/arkada-wvbs-widget.js"></script>
-
-</body>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/arkada-widgets/dist/arkada-wvbs-widget.js"
+    ></script>
+  </body>
 </html>
 ```
 
